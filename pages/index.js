@@ -1,10 +1,9 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import { Box } from "@chakra-ui/react";
 
 export default function Home() {
-  return <Title>My page</Title>
+  return (
+    <Box bg="tomato" w="100%" p={4} color="white">
+      Olá mundo
+    </Box>
+  );
 }
