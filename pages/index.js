@@ -1,5 +1,5 @@
+import Link from "next/link";
 import {
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -8,9 +8,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
-import Link from "next/link";
-import Footer from "../src/components/Footer";
-import { Content } from "../src/styles";
+import PropTypes from "prop-types";
+import Footer from "src/components/Footer";
+import Header from "src/components/Header";
+import { Content } from "src/styles";
 
 export default function Home() {
   function cpfMask(value) {
@@ -42,25 +43,7 @@ export default function Home() {
   }
   return (
     <Content>
-      <header>
-        <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
-          <h1>RN + VACINA</h1>
-        </Box>
-        <Box
-          className="header-bottom"
-          bg="#00B3F3"
-          w="100%"
-          p={4}
-          color="#fff"
-          h="15vh"
-        >
-          <h1>Bem-vindo ao RN + Vacina Cidadão,</h1>
-          <span>
-            Veja suas vacinas, detalhes da aplicação e saiba quando deverá tomar
-            as próximas doses.
-          </span>
-        </Box>
-      </header>
+      <Header />
       <main>
         {" "}
         <Formik
@@ -82,7 +65,7 @@ export default function Home() {
             setFieldValue,
             handleBlur,
           }) => (
-            <Form>
+            <Form className="agendamento-form">
               <Field name="cpf">
                 {({ field, form }) => (
                   <FormControl isInvalid={errors.cpf && touched.cpf}>
@@ -118,10 +101,15 @@ export default function Home() {
               </Field>
               <Flex flexDirection="column">
                 <Link href="/">
-                  <a>Esqueci minha senha</a>
+                  <a className="forgot-password">Esqueci minha senha</a>
                 </Link>
-                <Button mt={4} isLoading={isSubmitting} type="submit">
-                  Enviar
+                <Button
+                  mt={4}
+                  isLoading={isSubmitting}
+                  type="submit"
+                  className="form-button"
+                >
+                  Entrar
                 </Button>
               </Flex>
             </Form>
