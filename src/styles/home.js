@@ -17,7 +17,7 @@ export const Content = styled.div`
   }
 
   .agendamento-form > div {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .form-button {

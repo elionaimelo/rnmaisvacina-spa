@@ -6,7 +6,7 @@ export const Footer = styled.footer`
   justify-content: center;
   text-align: center;
   background-color: #f0f0f0;
-  width: 100vw;
+  max-width: 100%;
   padding: 3rem;
   color: #575757;
 

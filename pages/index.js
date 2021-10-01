@@ -8,10 +8,9 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
-import PropTypes from "prop-types";
 import Footer from "src/components/Footer";
 import Header from "src/components/Header";
-import { Content } from "src/styles";
+import { Content } from "src/styles/home";
 
 export default function Home() {
   function cpfMask(value) {
@@ -93,7 +92,7 @@ export default function Home() {
               <Field name="password">
                 {({ field, form }) => (
                   <FormControl isInvalid={errors.password && touched.password}>
-                    <FormLabel htmlFor="password">Senha</FormLabel>
+                    <FormLabel htmlFor="password">SENHA</FormLabel>
                     <Input {...field} id="password" type="password" />
                     <FormErrorMessage>{errors.password}</FormErrorMessage>
                   </FormControl>
@@ -103,6 +102,7 @@ export default function Home() {
                 <Link href="/">
                   <a className="forgot-password">Esqueci minha senha</a>
                 </Link>
+                {/* habilitar depois da validaçao dos dados*/}
                 <Button
                   mt={4}
                   isLoading={isSubmitting}

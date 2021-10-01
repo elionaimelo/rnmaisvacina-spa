@@ -28,19 +28,19 @@ function index() {
           <div>
             <Breadcrumb
               spacing="8px"
-              separator={<ChevronRightIcon color="#fff" />}
+              separator={<ChevronRightIcon boxSize={5} color="#fff" />}
             >
               <BreadcrumbItem>
                 <BreadcrumbLink href="/inicio">
                   <Box
                     as="button"
                     py={1}
-                    px={3}
+                    px={router.pathname == "/inicio" ? 1 : 3}
                     borderRadius="3"
                     bg={router.pathname == "/inicio" ? "#00B3F3" : "#fff"}
                     color={router.pathname == "/inicio" ? "#fff" : "#00B3F3"}
                   >
-                    Home
+                    Início
                   </Box>
                 </BreadcrumbLink>
               </BreadcrumbItem>
@@ -51,7 +51,7 @@ function index() {
                   <Box
                     as="button"
                     py={1}
-                    px={3}
+                    px={router.pathname == "/" ? 1 : 3}
                     borderRadius="3"
                     bg={router.pathname == "/" ? "#00B3F3" : "#fff"}
                     color={router.pathname == "/" ? "#fff" : "#00B3F3"}
