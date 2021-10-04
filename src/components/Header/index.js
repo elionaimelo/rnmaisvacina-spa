@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Header } from "./header";
+import Image from "next/image";
+import { Container } from "./header.style";
 import {
   Flex,
   Box,
@@ -9,13 +10,14 @@ import {
   BreadcrumbLink,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import logo from "src/assets/images/logo.svg";
 
-function index() {
+export const Header = () => {
   const router = useRouter();
   return (
-    <Header>
+    <Container>
       <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
-        <h1>RN + VACINA</h1>
+        <Image unsized src={logo} alt="" />
       </Box>
       <Box
         className="header-bottom"
@@ -35,31 +37,51 @@ function index() {
                   <Box
                     as="button"
                     py={1}
-                    px={router.pathname == "/inicio" ? 1 : 3}
+                    px={3}
                     borderRadius="3"
-                    bg={router.pathname == "/inicio" ? "#00B3F3" : "#fff"}
-                    color={router.pathname == "/inicio" ? "#fff" : "#00B3F3"}
+                    bg="#fff"
+                    color="#00B3F3"
                   >
                     Início
                   </Box>
                 </BreadcrumbLink>
               </BreadcrumbItem>
 
-              <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink href="#">
+              <BreadcrumbItem
+                isCurrentPage={router.pathname == "/" ? true : false}
+              >
+                <BreadcrumbLink href="/">
                   {" "}
                   <Box
                     as="button"
                     py={1}
-                    px={router.pathname == "/" ? 1 : 3}
+                    px={1}
                     borderRadius="3"
-                    bg={router.pathname == "/" ? "#00B3F3" : "#fff"}
-                    color={router.pathname == "/" ? "#fff" : "#00B3F3"}
+                    bg="#00B3F3"
+                    color="#fff"
                   >
                     Cidadão
                   </Box>
                 </BreadcrumbLink>
               </BreadcrumbItem>
+
+              {router.pathname == "/recuperar_senha" && (
+                <BreadcrumbItem isCurrentPage>
+                  <BreadcrumbLink href="/recuperar_senha">
+                    {" "}
+                    <Box
+                      as="button"
+                      py={1}
+                      px={1}
+                      borderRadius="3"
+                      bg="#00B3F3"
+                      color="#fff"
+                    >
+                      Redefinição de senha
+                    </Box>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+              )}
             </Breadcrumb>
           </div>
           <div className="header-bottom-text">
@@ -71,8 +93,8 @@ function index() {
           </div>
         </Flex>
       </Box>
-    </Header>
+    </Container>
   );
-}
+};
 
-export default index;
+// export default index;

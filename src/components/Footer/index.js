@@ -1,14 +1,17 @@
-import { Footer } from "./footer";
+import { Container } from "./footer.style";
 import Image from "next/image";
 
 import sus from "src/assets/images/sus.svg";
 import lais from "src/assets/images/lais.svg";
 import ufrn from "src/assets/images/ufrn.svg";
 import rn from "src/assets/images/rn.svg";
+import navi from "src/assets/images/navi.png";
+import ifrn from "src/assets/images/ifrn.png";
+import digti from "src/assets/images/digti.png";
 
-function index() {
+export const Footer = () => {
   return (
-    <Footer>
+    <Container>
       <h5>Realização</h5>
       <div className="footer-separator"></div>
       <section className="footer-imgs">
@@ -23,13 +26,13 @@ function index() {
         </span>
         <Image unsized src={lais} alt="" />
         <span className="footer-img">
-          <Image unsized src={sus} alt="" />
+          <Image unsized src={navi} alt="" />
         </span>
         <span className="footer-img">
-          <Image unsized src={sus} alt="" />
+          <Image unsized src={ifrn} alt="" />
         </span>
         <span className="footer-img">
-          <Image unsized src={sus} alt="" />
+          <Image unsized src={digti} alt="" />
         </span>
       </section>
       <span>
@@ -37,8 +40,6 @@ function index() {
         direitos reservados.
       </span>
       <span className="footer-code">j2hv34j32h4v</span>
-    </Footer>
+    </Container>
   );
-}
-
-export default index;
+};
