@@ -32,26 +32,27 @@ export default function RecuperarSenha() {
 
   function validateData(values) {
     const errors = {};
-    if (!values.cpf) {
-      errors.cpf = "Campo obrigatório";
-    } else if (!/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/.test(values.cpf)) {
-      errors.cpf = "CPF não válido";
-    }
+    const required = ["cpf", "password", "dateBirth"];
+    for (let field of required) {
+      if (!values[field]) {
+        errors[field] = "Campo obrigatório";
+      } else {
+        if (!/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/.test(values.cpf)) {
+          errors.cpf = "CPF não válido";
+        }
 
-    if (!values.password) {
-      errors.password = "Campo obrigatório";
-    } else if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-        values.password
-      )
-    ) {
-      errors.password = "Senha não válida";
-    }
+        if (
+          !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+            values.password
+          )
+        ) {
+          errors.password = "Senha não válida";
+        }
 
-    if (!values.confirmPassword) {
-      errors.confirmPassword = "";
-    } else if (values.confirmPassword !== values.password) {
-      errors.confirmPassword = "As senhas devem ser iguais";
+        if (values.confirmPassword !== values.password) {
+          errors.confirmPassword = "As senhas devem ser iguais";
+        }
+      }
     }
 
     return errors;
