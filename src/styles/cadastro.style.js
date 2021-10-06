@@ -9,7 +9,7 @@ export const Content = styled.div`
   }
 
   .agendamento-form {
-    max-width: 330px;
+    /* max-width: 330px; */
   }
 
   .agendamento-form input {
@@ -31,5 +31,9 @@ export const Content = styled.div`
     color: #007bff;
     font-weight: 500;
     font-size: 14px;
+  }
+
+  .subform {
+    background-color: #f3f3f3;
   }
 `;

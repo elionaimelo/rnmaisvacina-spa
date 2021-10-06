@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Button,
   FormControl,
@@ -7,30 +9,19 @@ import {
   Select,
   FormHelperText,
   Checkbox,
+  CheckboxGroup,
+  HStack,
+  Flex,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 import { Content } from "src/styles/cadastro.style";
 import { Header, Footer } from "src/components";
+import GrupoPrioritario from "src/objects/GrupoPrioritario";
+import initialValuesForm from "src/objects/initialValuesForm";
 
 export default function Cadastro() {
   const initialValues = {
-    cpf: "",
-    name: "",
-    dateBirth: "",
-    email: "",
-    phone: "",
-    profession: "",
-    priorityGroup: "",
-    cep: "",
-    street: "",
-    number: "",
-    complement: "",
-    neighborhood: "",
-    city: "",
-    password: "",
-    confirmPassword: "",
-    declaration: false,
-    agreement: false,
+    ...initialValuesForm,
   };
 
   function cpfMask(value) {
@@ -43,51 +34,24 @@ export default function Cadastro() {
   }
 
   function phoneMask(value) {
-    // //Filter only numbers from the input
-    // let cleaned = ("" + value).replace(/\D/g, "");
-
-    // //Check if the input is of correct length
-    // let match = cleaned.match(/^(\d{2})(\d{1})(\d{4})(\d{4})$/);
-
-    // if (match) {
-    //   console.log(match);
-    //   return "(" + match[1] + ") " + match[2] + " " + match[3] + "-" + match[4];
-    // }
-
     return value
       .toString()
-      .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
-      .replace(/(\d{2})/, "($1) ") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+      .replace(/\D/g, "")
+      .replace(/(\d{2})/, "($1) ")
       .replace(/(\d{5})(\d{4})/, "$1-$2");
+  }
+
+  function cepMask(value) {
+    return value
+      .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
+      .replace(/(\d{5})(\d{3})/, "$1-$2"); // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
   }
 
   function validateData(values) {
     const errors = {};
-    // const required = [
-    //   "cpf",
-    //   "name",
-    //   "dateBirth",
-    //   "profession",
-    //   "cep",
-    //   "street",
-    //   "number",
-    //   "neighborhood",
-    //   "city",
-    //   "password",
-    //   "confirmPassword",
-    //   "declaration",
-    //   "agreement",
-    // ];
-    // for (let field of required) {
-    //   if (!values[field]) {
-    //     errors[field] = "Campo obrigatório";
-    //   } else {
     if (!/[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}/.test(values.cpf)) {
       errors.cpf = "CPF não válido";
     }
-    //   }
-    // }
-
     if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email) &&
       values.email !== ""
@@ -107,6 +71,15 @@ export default function Cadastro() {
 
     return errors;
   }
+
+  function formattedName(name) {
+    return name
+      ?.replace(/ /g, "_")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  }
+
   return (
     <Content>
       <Header />
@@ -115,6 +88,7 @@ export default function Cadastro() {
           initialValues={initialValues}
           validate={(values) => validateData(values)}
           onSubmit={(values, actions) => {
+            console.log(JSON.stringify(values, null, 2));
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               actions.setSubmitting(false);
@@ -282,7 +256,117 @@ export default function Cadastro() {
                 )}
               </Field>
 
-              {/* radio checks, cep */}
+              {/* radio checks */}
+
+              <Field name="priorityGroup" type="checkbox">
+                {({ field, form }) => {
+                  function checkbox(label) {
+                    const nameField = formattedName(label);
+                    console.log(values);
+                    return (
+                      <Checkbox
+                        value={nameField}
+                        {...field}
+                        id={nameField}
+                        onChange={(e) => {
+                          setFieldValue(nameField, e.target.checked);
+                        }}
+                      >
+                        {label}
+                      </Checkbox>
+                    );
+                  }
+                  return (
+                    <FormControl
+                      isInvalid={errors.agreement && touched.agreement}
+                      isRequired
+                    >
+                      <FormLabel>
+                        VOCÊ FAZ PARTE DE ALGUM GRUPO PRIORITÁRIO? VERIFIQUE E
+                        MARQUE A SEGUIR.
+                      </FormLabel>
+                      <CheckboxGroup>
+                        <HStack>
+                          <Flex flexDirection="column">
+                            {GrupoPrioritario.map((el) => {
+                              if (!el.options) {
+                                return checkbox(el.name);
+                              } else {
+                                const vetor = el.objects;
+                                const name = el.name;
+                                return (
+                                  <>
+                                    {checkbox(name)}
+                                    {el.options && (
+                                      <section className="subform">
+                                        <HStack>
+                                          <Flex flexDirection="column">
+                                            {vetor.map((item) =>
+                                              checkbox(item)
+                                            )}
+                                          </Flex>
+                                        </HStack>
+                                      </section>
+                                    )}
+                                  </>
+                                );
+                              }
+                            })}
+                          </Flex>
+                        </HStack>
+                      </CheckboxGroup>
+                      <FormErrorMessage>{errors.agreement}</FormErrorMessage>
+                    </FormControl>
+                  );
+                }}
+              </Field>
+
+              <Field name="agreement" type="checkbox">
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={errors.agreement && touched.agreement}
+                  >
+                    <Checkbox
+                      {...field}
+                      id="agreement"
+                      onChange={(e) =>
+                        setFieldValue("agreement", e.target.checked)
+                      }
+                    >
+                      <FormLabel>
+                        DESEJO RECEBER NOTIFICAÇÃO POR E-MAIL COM OS LEMBRETES
+                        PARA PRÓXIMA DOSE
+                      </FormLabel>
+                    </Checkbox>
+                    <FormErrorMessage>{errors.agreement}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+
+              <Field name="cep">
+                {({ field, form }) => (
+                  <FormControl isInvalid={errors.cep && touched.cep} isRequired>
+                    <FormLabel htmlFor="cep">CEP</FormLabel>
+                    <Input
+                      {...field}
+                      id="cep"
+                      maxLength="8"
+                      value={values.cep}
+                      onChange={(e) => {
+                        const formatted = cepMask(values.cep);
+                        setFieldValue("cep", formatted);
+                        handleChange(e);
+                      }}
+                      onBlur={(e) => {
+                        const formatted = cepMask(values.cep);
+                        setFieldValue("cep", formatted);
+                        handleBlur(e);
+                      }}
+                    />
+                    <FormErrorMessage>{errors.cep}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
 
               <Field name="street">
                 {({ field, form }) => (
@@ -449,8 +533,10 @@ export default function Cadastro() {
                         setFieldValue("declaration", e.target.checked)
                       }
                     >
-                      EU DECLARO QUE AS INFORMAÇÕES SÃO VERDADEIRAS, DE ACORDO
-                      COM O ART. 219 DO CÓDIGO CIVIL.
+                      <FormLabel>
+                        EU DECLARO QUE AS INFORMAÇÕES SÃO VERDADEIRAS, DE ACORDO
+                        COM O ART. 219 DO CÓDIGO CIVIL.
+                      </FormLabel>
                     </Checkbox>
                     <FormErrorMessage>{errors.declaration}</FormErrorMessage>
                   </FormControl>
@@ -470,7 +556,9 @@ export default function Cadastro() {
                         setFieldValue("agreement", e.target.checked)
                       }
                     >
-                      EU LI E CONCORDO COM A POLÍTICA DE PRIVACIDADE.
+                      <FormLabel>
+                        EU LI E CONCORDO COM A POLÍTICA DE PRIVACIDADE.
+                      </FormLabel>
                     </Checkbox>
                     <FormErrorMessage>{errors.agreement}</FormErrorMessage>
                   </FormControl>
@@ -485,7 +573,7 @@ export default function Cadastro() {
                 type="submit"
                 className="form-button"
               >
-                Alterar senha
+                Enviar
               </Button>
             </Form>
           )}
