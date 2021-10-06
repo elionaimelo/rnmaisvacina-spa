@@ -1,0 +1,7 @@
+const acima_75 = [
+  "PESSOAS DE 75 A 79 ANOS",
+  "PESSOAS DE 80 ANOS OU MAIS",
+  "PESSOAS ACAMADAS DE 75 A 79",
+  "PESSOAS ACAMADAS DE 80 ANOS OU MAIS",
+];
+export default acima_75;
