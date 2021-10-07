@@ -35,5 +35,11 @@ export const Content = styled.div`
 
   .subform {
     background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .subform label {
+    margin: 5px 0;
   }
 `;

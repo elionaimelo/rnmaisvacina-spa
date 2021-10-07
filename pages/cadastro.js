@@ -262,7 +262,6 @@ export default function Cadastro() {
                 {({ field, form }) => {
                   function checkbox(label) {
                     const nameField = formattedName(label);
-                    console.log(values);
                     return (
                       <Checkbox
                         value={nameField}
@@ -272,14 +271,13 @@ export default function Cadastro() {
                           setFieldValue(nameField, e.target.checked);
                         }}
                       >
-                        {label}
+                        <FormLabel my={1}>{label}</FormLabel>
                       </Checkbox>
                     );
                   }
                   return (
                     <FormControl
                       isInvalid={errors.agreement && touched.agreement}
-                      isRequired
                     >
                       <FormLabel>
                         VOCÊ FAZ PARTE DE ALGUM GRUPO PRIORITÁRIO? VERIFIQUE E
@@ -298,15 +296,23 @@ export default function Cadastro() {
                                   <>
                                     {checkbox(name)}
                                     {el.options && (
-                                      <section className="subform">
-                                        <HStack>
-                                          <Flex flexDirection="column">
-                                            {vetor.map((item) =>
-                                              checkbox(item)
-                                            )}
-                                          </Flex>
-                                        </HStack>
-                                      </section>
+                                      <>
+                                        <FormLabel ps={5} my={2}>
+                                          FAVOR, INFORME SEU GRUPO PRIORITÁRIO
+                                          NA LISTA ABAIXO
+                                        </FormLabel>
+                                        <section
+                                          className={`${el.field} subform`}
+                                        >
+                                          <HStack>
+                                            <Flex flexDirection="column">
+                                              {vetor.map((item) =>
+                                                checkbox(item)
+                                              )}
+                                            </Flex>
+                                          </HStack>
+                                        </section>
+                                      </>
                                     )}
                                   </>
                                 );
