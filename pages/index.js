@@ -1,3 +1,4 @@
+import { useState, useLayoutEffect } from "react";
 import Link from "next/link";
 import {
   Button,
@@ -8,11 +9,12 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
-import Footer from "src/components/Footer";
-import Header from "src/components/Header";
+import { Header, Footer } from "src/components";
 import { Content } from "src/styles/home";
 
 export default function Home() {
+  const [isDisabled, setIsDisabled] = useState(true);
+
   function cpfMask(value) {
     return value
       .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
@@ -38,8 +40,16 @@ export default function Home() {
     ) {
       errors.password = "Password não válido";
     }
+
+    // if (errors === {}) {
+    //   setIsDisabled(true);
+    // }
     return errors;
   }
+
+  const buttonDisabled = () => {
+    return;
+  };
   return (
     <Content>
       <Header />
@@ -99,11 +109,12 @@ export default function Home() {
                 )}
               </Field>
               <Flex flexDirection="column">
-                <Link href="/">
+                <Link href="/recuperar_senha">
                   <a className="forgot-password">Esqueci minha senha</a>
                 </Link>
                 {/* habilitar depois da validaçao dos dados*/}
                 <Button
+                  isDisabled={isDisabled}
                   mt={4}
                   isLoading={isSubmitting}
                   type="submit"
