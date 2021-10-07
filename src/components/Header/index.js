@@ -15,7 +15,7 @@ function index() {
   return (
     <Header>
       <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
-        <h1>RN + VACINA</h1>
+        <h1>react</h1>
       </Box>
       <Box
         className="header-bottom"
