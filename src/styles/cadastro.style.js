@@ -42,4 +42,25 @@ export const Content = styled.div`
   .subform label {
     margin: 5px 0;
   }
+
+  .subform-hide {
+    display: none;
+  }
+
+  @keyframes fader-soon {
+    0% {
+      opacity: 0;
+      display: none;
+    }
+    100% {
+      opacity: 1;
+      display: block;
+    }
+  }
+
+  .subform-appear {
+    opacity: 1;
+    display: block;
+    animation: fader-soon 1s;
+  }
 `;
