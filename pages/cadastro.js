@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Link from "next/link";
 import {
   Button,
   FormControl,
@@ -61,7 +61,9 @@ export default function Cadastro() {
     if (
       !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
         values.password
-      )
+      ) ||
+      values.password.length < 6 ||
+      values.password.length > 20
     ) {
       errors.password = "Senha não válida";
     }
@@ -574,12 +576,13 @@ export default function Cadastro() {
                   >
                     <Checkbox
                       {...field}
+                      ps={5}
                       id="declaration"
                       onChange={(e) =>
                         setFieldValue("declaration", e.target.checked)
                       }
                     >
-                      <FormLabel>
+                      <FormLabel my={1}>
                         EU DECLARO QUE AS INFORMAÇÕES SÃO VERDADEIRAS, DE ACORDO
                         COM O ART. 219 DO CÓDIGO CIVIL.
                       </FormLabel>
@@ -597,12 +600,13 @@ export default function Cadastro() {
                   >
                     <Checkbox
                       {...field}
+                      ps={5}
                       id="agreement"
                       onChange={(e) =>
                         setFieldValue("agreement", e.target.checked)
                       }
                     >
-                      <FormLabel>
+                      <FormLabel my={1}>
                         EU LI E CONCORDO COM A POLÍTICA DE PRIVACIDADE.
                       </FormLabel>
                     </Checkbox>
@@ -610,6 +614,9 @@ export default function Cadastro() {
                   </FormControl>
                 )}
               </Field>
+              <Link href="/">
+                <a className="forgot-password">Abrir termos e condições</a>
+              </Link>
 
               {/* habilitar depois da validaçao dos dados*/}
               <Button

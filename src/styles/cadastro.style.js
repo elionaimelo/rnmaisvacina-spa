@@ -20,29 +20,6 @@ export const Content = styled.div`
     margin-bottom: 15px;
   }
 
-  .form-button {
-    background-color: #00b3f3;
-    color: #fff;
-    height: 60px;
-    width: 100%;
-  }
-
-  .forgot-password {
-    color: #007bff;
-    font-weight: 500;
-    font-size: 14px;
-  }
-
-  .subform {
-    background-color: #f3f3f3;
-    padding: 20px;
-    border-radius: 5px;
-  }
-
-  .subform label {
-    margin: 5px 0;
-  }
-
   .subform-hide {
     display: none;
   }
@@ -62,5 +39,27 @@ export const Content = styled.div`
     opacity: 1;
     display: block;
     animation: fader-soon 1s;
+  }
+  .subform {
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .subform label {
+    margin: 5px 0;
+  }
+
+  .form-button {
+    background-color: #00b3f3;
+    color: #fff;
+    height: 60px;
+    width: 100%;
+  }
+
+  .forgot-password {
+    color: #007bff;
+    font-weight: 500;
+    font-size: 14px;
   }
 `;
