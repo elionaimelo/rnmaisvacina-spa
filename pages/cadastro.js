@@ -256,23 +256,92 @@ export default function Cadastro() {
                 )}
               </Field>
 
-              {/* radio checks */}
-
               <Field name="priorityGroup" type="checkbox">
                 {({ field, form }) => {
-                  function checkbox(label) {
+                  function checkbox(label, subform, vetor) {
                     const nameField = formattedName(label);
                     return (
-                      <Checkbox
-                        value={nameField}
-                        {...field}
-                        id={nameField}
-                        onChange={(e) => {
-                          setFieldValue(nameField, e.target.checked);
-                        }}
-                      >
-                        <FormLabel my={1}>{label}</FormLabel>
-                      </Checkbox>
+                      <>
+                        <Checkbox
+                          key={nameField}
+                          value={nameField}
+                          {...field}
+                          id={nameField}
+                          onChange={(e) => {
+                            setFieldValue(nameField, e.target.checked);
+                          }}
+                        >
+                          <FormLabel my={1}>{label}</FormLabel>
+                        </Checkbox>
+                        {subform && values[nameField] ? (
+                          <div className="subform-appear">
+                            <FormLabel ps={5} my={2}>
+                              FAVOR, INFORME SEU GRUPO PRIORITÁRIO NA LISTA
+                              ABAIXO
+                            </FormLabel>
+                            <section className="subform">
+                              <HStack>
+                                <Flex flexDirection="column">
+                                  {vetor.map((item) => {
+                                    const nameItem = formattedName(item);
+                                    return (
+                                      <Checkbox
+                                        key={nameItem}
+                                        value={nameItem}
+                                        {...field}
+                                        id={nameItem}
+                                        onChange={(e) => {
+                                          setFieldValue(
+                                            nameItem,
+                                            e.target.checked
+                                          );
+                                        }}
+                                      >
+                                        <FormLabel my={1}>{item}</FormLabel>
+                                      </Checkbox>
+                                    );
+                                  })}
+                                </Flex>
+                              </HStack>
+                            </section>
+                          </div>
+                        ) : (
+                          vetor !== null && (
+                            <div className="subform-hide">
+                              <FormLabel ps={5} my={2}>
+                                FAVOR, INFORME SEU GRUPO PRIORITÁRIO NA LISTA
+                                ABAIXO
+                              </FormLabel>
+                              <section className="subform">
+                                <HStack>
+                                  <Flex flexDirection="column">
+                                    {vetor.map((item) => {
+                                      const nameItem = formattedName(item);
+                                      return (
+                                        <Checkbox
+                                          key={nameItem}
+                                          value={nameItem}
+                                          {...field}
+                                          id={nameItem}
+                                          onChange={(e) => {
+                                            setFieldValue(
+                                              nameItem,
+                                              e.target.checked
+                                            );
+                                          }}
+                                          isChecked={false}
+                                        >
+                                          <FormLabel my={1}>{item}</FormLabel>
+                                        </Checkbox>
+                                      );
+                                    })}
+                                  </Flex>
+                                </HStack>
+                              </section>
+                            </div>
+                          )
+                        )}
+                      </>
                     );
                   }
                   return (
@@ -287,36 +356,7 @@ export default function Cadastro() {
                         <HStack>
                           <Flex flexDirection="column">
                             {GrupoPrioritario.map((el) => {
-                              if (!el.options) {
-                                return checkbox(el.name);
-                              } else {
-                                const vetor = el.objects;
-                                const name = el.name;
-                                return (
-                                  <>
-                                    {checkbox(name)}
-                                    {el.options && (
-                                      <>
-                                        <FormLabel ps={5} my={2}>
-                                          FAVOR, INFORME SEU GRUPO PRIORITÁRIO
-                                          NA LISTA ABAIXO
-                                        </FormLabel>
-                                        <section
-                                          className={`${el.field} subform`}
-                                        >
-                                          <HStack>
-                                            <Flex flexDirection="column">
-                                              {vetor.map((item) =>
-                                                checkbox(item)
-                                              )}
-                                            </Flex>
-                                          </HStack>
-                                        </section>
-                                      </>
-                                    )}
-                                  </>
-                                );
-                              }
+                              return checkbox(el.name, el.options, el.objects);
                             })}
                           </Flex>
                         </HStack>
