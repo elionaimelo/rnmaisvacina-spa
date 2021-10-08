@@ -1,13 +1,7 @@
 import styled from "styled-components";
+import { Form } from "formik";
 
-export const Content = styled.div`
-  main {
-    /* max-width: 560px; */
-    margin: auto;
-    padding: 3rem 5rem;
-    color: #345b77;
-  }
-
+export const FormCustom = styled(Form)`
   .agendamento-form {
     max-width: 330px;
   }

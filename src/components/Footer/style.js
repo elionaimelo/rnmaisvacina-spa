@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.footer`
+export const ContainerFooter = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +9,13 @@ export const Container = styled.footer`
   max-width: 100%;
   padding: 3rem;
   color: #575757;
+
+  @media (min-width: 600px) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 
   h5 {
     font-weight: 700;
