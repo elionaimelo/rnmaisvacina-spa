@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   Button,
@@ -51,7 +51,7 @@ export default function Home() {
     return;
   };
   return (
-    <Content>
+    <>
       <Header />
       <main>
         {" "}
@@ -128,6 +128,6 @@ export default function Home() {
         </Formik>
       </main>
       <Footer />
-    </Content>
+    </>
   );
 }

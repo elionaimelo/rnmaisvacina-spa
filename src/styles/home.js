@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-  main {
-    /* max-width: 560px; */
+  /* main {
     margin: auto;
     padding: 3rem 5rem;
     color: #345b77;
-  }
+  } */
 
   .agendamento-form {
     max-width: 330px;
