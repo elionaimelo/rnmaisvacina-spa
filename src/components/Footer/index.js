@@ -1,4 +1,4 @@
-import { Container } from "./footer.style";
+import { ContainerFooter } from "./style";
 import Image from "next/image";
 
 // import sus from "src/assets/images/sus.svg";
@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export const Footer = () => {
   return (
-    <Container>
+    <ContainerFooter>
       <h5>Realização</h5>
       <div className="footer-separator"></div>
       <section className="footer-imgs">
@@ -40,6 +40,6 @@ export const Footer = () => {
         direitos reservados.
       </span>
       <span className="footer-code">j2hv34j32h4v</span>
-    </Container>
+    </ContainerFooter>
   );
 };
