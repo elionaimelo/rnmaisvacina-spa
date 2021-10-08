@@ -1,40 +1,65 @@
 import { ContainerFooter } from "./style";
 import Image from "next/image";
-
-// import sus from "src/assets/images/sus.svg";
-// import lais from "src/assets/images/lais.svg";
-// import ufrn from "src/assets/images/ufrn.svg";
-// import rn from "src/assets/images/rn.svg";
-// import navi from "src/assets/images/navi.png";
-// import ifrn from "src/assets/images/ifrn.png";
-// import digti from "src/assets/images/digti.png";
+import { Grid, Box } from "@chakra-ui/react";
 
 export const Footer = () => {
   return (
-    <ContainerFooter>
+    <ContainerFooter maxW="container.md">
       <h5>Realização</h5>
       <div className="footer-separator"></div>
-      <section className="footer-imgs">
-        {/* <span className="footer-img">
-          <Image unsized src={sus} alt="" />
-        </span>
-        <span className="footer-img">
-          <Image unsized src={rn} alt="" />
-        </span>
-        <span className="footer-img">
-          <Image unsized src={ufrn} alt="" />
-        </span>
-        <Image unsized src={lais} alt="" />
-        <span className="footer-img">
-          <Image unsized src={navi} alt="" />
-        </span>
-        <span className="footer-img">
-          <Image unsized src={ifrn} alt="" />
-        </span>
-        <span className="footer-img">
-          <Image unsized src={digti} alt="" />
-        </span> */}
-      </section>
+      <Box maxW="lg">
+        <Grid templateColumns="repeat(4, 1fr)" gap={1}>
+          <Image
+            src="/assets/images/sus.svg"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+
+          <Image
+            src="/assets/images/rn.svg"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+
+          <Image
+            src="/assets/images/ufrn.svg"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+        </Grid>
+        <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+          <Image
+            src="/assets/images/navi.png"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+
+          <Image
+            src="/assets/images/ifrn.png"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+
+          <Image
+            src="/assets/images/digti.png"
+            layout="fixed"
+            width={150}
+            height={70}
+            alt=""
+          />
+        </Grid>
+      </Box>
+
       <span>
         2021 © Laboratório de Inovação Tecnológica em Saúde - UFRN. Todos os
         direitos reservados.

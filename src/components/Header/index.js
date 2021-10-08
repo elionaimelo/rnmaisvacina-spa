@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { FlexCustom, Title } from "./header.style";
-// import logo from "src/assets/images/logo.svg";
 
 export const Header = () => {
   const router = useRouter();
