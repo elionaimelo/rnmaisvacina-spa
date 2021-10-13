@@ -20,7 +20,7 @@ export const Footer = () => {
           <Image
             src="/assets/images/sus.svg"
             layout="fixed"
-            width={150}
+            width={200}
             height={40}
             alt=""
           />
@@ -73,7 +73,7 @@ export const Footer = () => {
           <Image
             src="/assets/images/digti.png"
             layout="fixed"
-            width={121}
+            width={145}
             height={30}
             alt=""
           />
