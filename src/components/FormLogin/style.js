@@ -16,7 +16,7 @@ export const FormCustom = styled(Form)`
   }
 
   .form-button {
-    background-color: #00b3f3;
+    background-color: ${({ theme }) => theme.colors.primary} !important;
     color: #fff;
     height: 60px;
   }
@@ -29,6 +29,6 @@ export const FormCustom = styled(Form)`
 `;
 
 export const StylishInput = styled(Input)`
-  border-color: #345b77 !important;
+  border-color: ${({ theme }) => theme.colors.borders.main.color} !important;
   height: 60px !important;
 `;
