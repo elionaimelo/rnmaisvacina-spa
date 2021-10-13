@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Form } from "formik";
+import { Input } from "@chakra-ui/react";
 
 export const FormCustom = styled(Form)`
   .agendamento-form {
@@ -25,4 +26,9 @@ export const FormCustom = styled(Form)`
     font-weight: 500;
     font-size: 14px;
   }
+`;
+
+export const StylishInput = styled(Input)`
+  border-color: #345b77 !important;
+  height: 60px !important;
 `;
