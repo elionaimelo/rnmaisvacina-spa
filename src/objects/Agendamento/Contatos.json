@@ -1,0 +1,20 @@
+{
+  "municipios": [
+    {
+      "nome": "Natal",
+      "telefones": ["(84) 3232-8487"],
+      "emails": [
+        "sms@natal.rn.gov.br",
+        "maisvacinanatal@gmail.com",
+        "pendenciasvacinasms@gmail.com"
+      ],
+      "sites": ["https://natal.rn.gov.br/"]
+    },
+    {
+      "nome": "Parnamirim",
+      "telefones": ["(84) 3644-8501", "32727612"],
+      "emails": ["smsparnamirim@rn.gov.br"],
+      "sites": ["https://parnamirim.rn.gov.br/"]
+    }
+  ]
+}

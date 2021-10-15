@@ -10,6 +10,11 @@ const colors = {
       contrastText: "#fff",
     },
   },
+  links: {
+    main: {
+      color: "#007bff",
+    },
+  },
 };
 
 export default {

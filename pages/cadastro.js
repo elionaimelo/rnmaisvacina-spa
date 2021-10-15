@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Link from "next/link";
 import {
   Button,
@@ -14,10 +13,11 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
+
 import { Content } from "src/styles/cadastro.style";
 import { Header, Footer } from "src/components";
-import GrupoPrioritario from "src/objects/GrupoPrioritario";
-import initialValuesForm from "src/objects/initialValuesForm";
+import GrupoPrioritario from "src/objects/Cadastro/GrupoPrioritario";
+import initialValuesForm from "src/objects/Cadastro/initialValuesForm";
 
 export default function Cadastro() {
   const initialValues = {
