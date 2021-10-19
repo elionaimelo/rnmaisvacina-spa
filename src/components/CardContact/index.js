@@ -10,7 +10,6 @@ export function CardContact({ municipio }) {
   const phone = contactData[0].telefones;
   const email = contactData[0].emails;
   const site = contactData[0].sites;
-  console.log(contactData);
   return (
     <Content>
       <Box p={5} bg="#ededed" color="#0e162d">

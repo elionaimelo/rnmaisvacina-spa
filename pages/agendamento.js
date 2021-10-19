@@ -1,6 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Tabs, TabList, Tab, TabPanels } from "@chakra-ui/react";
+import {
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  Wrap,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 import {
   Header,
@@ -10,7 +17,12 @@ import {
   CardVacina,
 } from "src/components";
 import { Content, TabPage } from "src/styles/agendamento.style";
+import Vacinas from "src/objects/Agendamento/Vacinas.json";
+
 export default function Agendamento() {
+  const vacinas = Vacinas.vacinas;
+  const justifyWrap = useBreakpointValue({ base: "center", md: "row" });
+
   return (
     <>
       <Head>
@@ -32,7 +44,24 @@ export default function Agendamento() {
             </TabPage>
             <TabPage>
               <TabTitle>Vacinas</TabTitle>
-              <CardVacina />
+              <Wrap spacing="20px" justify={justifyWrap}>
+                {vacinas.map((el) => {
+                  return (
+                    <CardVacina
+                      nome={el.nome}
+                      dataVacinacao={el.data_vacinacao}
+                      segundaDose={el.segunda_dose}
+                      dataVacinacaoSegundaDose={el.data_vacinacao_segunda_dose}
+                      inicioPrevisao={el.inicio_previsao}
+                      fimPrevisao={el.fim_previsao}
+                      fabricante={el.fabricante}
+                      lote={el.lote}
+                      profissionalAplicador={el.profissional_aplicador}
+                      estabelecimentoSaude={el.estabelecimento_saude}
+                    />
+                  );
+                })}
+              </Wrap>
             </TabPage>
             <TabPage>
               <TabTitle>Contatos</TabTitle>
