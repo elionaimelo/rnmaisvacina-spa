@@ -10,9 +10,19 @@ const colors = {
       contrastText: "#fff",
     },
   },
+  secondary: {
+    main: {
+      color: "#345b77",
+    },
+  },
   links: {
     main: {
       color: "#007bff",
+    },
+  },
+  light: {
+    main: {
+      color: "#79cef7",
     },
   },
 };

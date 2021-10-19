@@ -2,7 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import { Tabs, TabList, Tab, TabPanels } from "@chakra-ui/react";
 
-import { Header, Footer, TabTitle, CardContact } from "src/components";
+import {
+  Header,
+  Footer,
+  TabTitle,
+  CardContact,
+  CardVacina,
+} from "src/components";
 import { Content, TabPage } from "src/styles/agendamento.style";
 export default function Agendamento() {
   return (
@@ -26,6 +32,7 @@ export default function Agendamento() {
             </TabPage>
             <TabPage>
               <TabTitle>Vacinas</TabTitle>
+              <CardVacina />
             </TabPage>
             <TabPage>
               <TabTitle>Contatos</TabTitle>
