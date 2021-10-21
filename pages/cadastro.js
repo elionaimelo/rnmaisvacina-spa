@@ -84,7 +84,6 @@ export default function Cadastro() {
 
   return (
     <Content>
-      <Header />
       <main>
         <Formik
           initialValues={initialValues}
@@ -632,7 +631,6 @@ export default function Cadastro() {
           )}
         </Formik>
       </main>
-      <Footer />
     </Content>
   );
 }

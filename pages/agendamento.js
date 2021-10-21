@@ -9,13 +9,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import {
-  Header,
-  Footer,
-  TabTitle,
-  CardContact,
-  CardVacina,
-} from "src/components";
+import { TabTitle, CardContact, CardVacina } from "src/components";
 import { Content, TabPage } from "src/styles/agendamento.style";
 import Vacinas from "src/objects/Agendamento/Vacinas.json";
 
@@ -29,10 +23,9 @@ export default function Agendamento() {
         <title>Agendamento</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Header auth />
       <Content>
         <Tabs variant="enclosed">
-          <TabList bg="#00B3F3" color="#fff">
+          <TabList bg="#00B3F3" color="#fff" border={"none"}>
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Agendamentos</Tab>
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Vacinas</Tab>
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Contatos</Tab>
@@ -85,7 +78,6 @@ export default function Agendamento() {
           </TabPanels>
         </Tabs>
       </Content>
-      <Footer />
     </>
   );
 }

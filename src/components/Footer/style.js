@@ -10,11 +10,6 @@ export const ContainerFooter = styled.footer`
   padding: 3rem;
   color: #575757;
 
-  @media (min-width: 600px) {
-    position: absolute;
-    width: 100%;
-  }
-
   h5 {
     font-weight: 700;
   }
