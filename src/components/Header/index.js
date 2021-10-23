@@ -10,7 +10,6 @@ import {
   Container,
   Flex,
   useBreakpointValue,
-  Stack,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
@@ -55,7 +54,7 @@ export const Header = ({ auth }) => {
           w="100%"
           color="#fff"
           minH="220px"
-          p={5}
+          py={5}
         >
           <Container maxW="container.xl" h="100%">
             <FlexCustom direction="column" justifyContent="center">
@@ -134,7 +133,7 @@ export const Header = ({ auth }) => {
           w="100%"
           color="#fff"
           minH="220px"
-          p={5}
+          py={5}
         >
           <Container maxW="container.xl" h="100%">
             <FlexCustom
@@ -211,7 +210,9 @@ export const Header = ({ auth }) => {
                   colorScheme="#00b3f3"
                   variant="outline"
                 >
-                  Declaração de Autocadastro
+                  <Link href="/document/declaracao_autocadastro">
+                    <a>Declaração de Autocadastro</a>
+                  </Link>
                 </ButtonHeader>
                 <ButtonHeader
                   boxSize={size}
