@@ -214,7 +214,6 @@ export default function AdicionarDependente() {
                 <Field name="priorityGroup" type="checkbox">
                   {({ field, form }) => {
                     function checkbox(label, subform, vetor) {
-                      console.log(vetor);
                       const nameField = formattedName(label);
                       return (
                         <>
