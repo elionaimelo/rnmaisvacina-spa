@@ -4,7 +4,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { Flex, Heading, Text, Box } from "@chakra-ui/react";
-import Vacinas from "src/objects/Agendamento/Vacinas.json";
+import Vacinas from "src/objects/Painel/Vacinas.json";
 import strings from "src/objects/CertificadoVacinacao/LangStrings.js";
 
 export default function CertificadoVacinacao() {

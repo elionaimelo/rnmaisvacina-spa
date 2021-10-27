@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Box, Heading, Text } from "@chakra-ui/react";
 
-import Contatos from "src/objects/Agendamento/Contatos.json";
+import Contatos from "src/objects/Painel/Contatos.json";
 import "./style";
 import { Content } from "./style";
 
