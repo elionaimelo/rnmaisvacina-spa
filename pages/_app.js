@@ -1,4 +1,4 @@
-import { ChakraProvider, Flex } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "src/styles/globalStyles";
 import theme from "src/styles/theme";

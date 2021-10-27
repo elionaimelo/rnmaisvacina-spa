@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-// import { Container } from "./header.style";
+import React from "react";
 import {
   Box,
   Breadcrumb,
@@ -10,17 +10,21 @@ import {
   Container,
   Flex,
   useBreakpointValue,
+  useDisclosure,
+  Modal,
+  ModalHeader,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   FlexCustom,
   Title,
   ButtonHeader,
-  ContainerHeader,
+  Flag,
+  ContentModal,
 } from "./header.style";
-// import logo from "src/assets/images/logo.svg";
 
 export const Header = ({ auth }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const direction = useBreakpointValue({ base: "column", lg: "row" });
   const size = useBreakpointValue({ base: "full", lg: "min" });
@@ -30,8 +34,24 @@ export const Header = ({ auth }) => {
     color: router.pathname === "/recuperar_senha" ? true : false,
   };
 
+  const goToDoc = (flag) => {
+    if (typeof window !== "undefined") {
+      if (flag === "es") {
+        document.location.assign(
+          "/document/certificado_vacinacao?language=es_es"
+        );
+      } else if (flag === "us") {
+        document.location.assign(
+          "/document/certificado_vacinacao?language=en_us"
+        );
+      } else {
+        document.location.assign("/document/certificado_vacinacao");
+      }
+    }
+  };
+
   return (
-    <ContainerHeader>
+    <>
       <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
         <Container maxW="container.xl">
           <Link href="/">
@@ -218,8 +238,12 @@ export const Header = ({ auth }) => {
                   boxSize={size}
                   colorScheme="#00b3f3"
                   variant="outline"
+                  onClick={onOpen}
                 >
                   Certificado de Vacinação
+                  {/* <Link href="/document/certificado_vacinacao">
+                    <a>Certificado de Vacinação</a>
+                  </Link> */}
                 </ButtonHeader>
                 <ButtonHeader
                   boxSize={size}
@@ -236,8 +260,40 @@ export const Header = ({ auth }) => {
           </Container>
         </Box>
       )}
-    </ContainerHeader>
+      <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <ContentModal>
+          <ModalHeader>Selecione o idioma desejado:</ModalHeader>
+          <Flex>
+            <Flag onClick={() => goToDoc("br")}>
+              <Image
+                src="/assets/images/flag-br.svg"
+                layout="fixed"
+                width={75}
+                height={55}
+                alt=""
+              />
+            </Flag>
+            <Flag onClick={() => goToDoc("us")}>
+              <Image
+                src="/assets/images/flag-us.svg"
+                layout="fixed"
+                width={75}
+                height={55}
+                alt=""
+              />
+            </Flag>
+            <Flag onClick={() => goToDoc("es")}>
+              <Image
+                src="/assets/images/flag-es.svg"
+                layout="fixed"
+                width={75}
+                height={55}
+                alt=""
+              />
+            </Flag>
+          </Flex>
+        </ContentModal>
+      </Modal>
+    </>
   );
 };
-
-// export default index;

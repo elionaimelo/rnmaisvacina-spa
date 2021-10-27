@@ -1,12 +1,26 @@
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { Flex, Heading, Text, Box } from "@chakra-ui/react";
 import Vacinas from "src/objects/Agendamento/Vacinas.json";
+import strings from "src/objects/CertificadoVacinacao/LangStrings.js";
 
 export default function CertificadoVacinacao() {
   const vacinas = Vacinas.vacinas;
-  console.log(vacinas);
+  const router = useRouter();
+  const { language } = router.query;
+  const [content, setContent] = useState(strings.pt_br);
+  useEffect(() => {
+    if (language === "en_us") {
+      setContent(strings.en_us);
+    } else if (language === "es_es") {
+      setContent(strings.es_es);
+    } else {
+      setContent(strings.pt_br);
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -14,24 +28,13 @@ export default function CertificadoVacinacao() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Heading size="xl" align={"center"} mb={6}>
-        Certificado
+        {content.TITLE}
       </Heading>
-      <Text>
-        Certificamos que,{" "}
-        <Text as="span" fontWeight={600}>
-          Fulando dos Santos Medeiros
-        </Text>
-        , CPF{" "}
-        <Text as="span" fontWeight={600}>
-          999.999.999-99
-        </Text>
-        , CNS{" "}
-        <Text as="span" fontWeight={600}>
-          000 0000 0000 0000
-        </Text>
-        , teve os seguintes registros de vacinação inseridos na plataforma RN +
-        Vacina Cidadão:
-      </Text>
+      {content.DESCRIPTION(
+        "Fulado de tal",
+        "000.000.000.-00",
+        "000 0000 0000 0000"
+      )}
       <Box bg={"#F6F6F6"} p={10} my={4}>
         {vacinas.map((el) => {
           return (
@@ -39,25 +42,25 @@ export default function CertificadoVacinacao() {
               <Text fontWeight={600}>{el.nome}:</Text>
               <Box ms={4}>
                 <Text fontWeight={600}>
-                  Vacina:
+                  {content.MANUFACTURER}
                   <Text as="span" fontWeight={400} ms={2}>
                     {el.nome} (Lote {el.lote})
                   </Text>
                 </Text>
                 <Text fontWeight={600}>
-                  Unidade de Saúde:
+                  {content.PLACE}
                   <Text as="span" fontWeight={400} ms={2}>
                     {el.estabelecimento_saude}
                   </Text>
                 </Text>
                 <Text fontWeight={600}>
-                  Data da Aplicação:
+                  {content.DATE}
                   <Text as="span" fontWeight={400} ms={2}>
                     {el.data_vacinacao}
                   </Text>
                 </Text>
                 <Text fontWeight={600}>
-                  Dose Aplicada:
+                  {content.DOSE}
                   <Text as="span" fontWeight={400} ms={2}>
                     {el.dose}ª Dose
                   </Text>
@@ -76,26 +79,23 @@ export default function CertificadoVacinacao() {
             height={30}
             alt=""
           />
-          <Text ms={4}>
-            Escaneie e consulte de maneira fácil e rápida a autenticidade do
-            certificado.
-          </Text>
+          <Text ms={4}>{content.VERIFY}</Text>
         </Flex>
       </Box>
       <Text align={"center"} mb={3} fontWeight={600}>
-        Chave de Autenticação
+        {content.AUTHKEY}
       </Text>
       <Text align={"center"} mb={3}>
         e516cS67843562dsafe6d3fa834d8c3bd
       </Text>
       <Text align={"center"} mb={3} fontWeight={600}>
-        Emitido em
+        {content.ISSUE}
       </Text>
       <Text align={"center"} mb={3}>
         23 de Outubro de 2021 às 16:43
       </Text>
       <Text align={"center"} mb={3} fontWeight={600}>
-        Consultar autenticidade do certificado em:
+        {content.VISIT}
       </Text>
       <Text align={"center"} mb={3} color="#007bff">
         <Link align={"center"} href={"cidadao/autenticidade/"}>

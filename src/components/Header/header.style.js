@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Flex, Button } from "@chakra-ui/react";
+import { Flex, Button, Box, ModalContent } from "@chakra-ui/react";
 
 export const FlexCustom = styled(Flex)`
   height: 100%;
@@ -21,4 +21,21 @@ export const ButtonHeader = styled(Button)`
   /* width: 100% !important; */
 `;
 
-export const ContainerHeader = styled.header``;
+export const Flag = styled(Box)`
+  border-radius: 5px;
+  overflow: hidden;
+  width: 75px;
+  height: 55px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+`;
+
+export const ContentModal = styled(ModalContent)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  margin: auto 15px;
+`;

@@ -16,7 +16,6 @@ import {
 import { Formik, Field, Form } from "formik";
 
 import { Content } from "@/components/Cadastro/style";
-import { Header, Footer } from "src/components";
 import GrupoPrioritario from "src/objects/Cadastro/GrupoPrioritario";
 import initialValuesForm from "src/objects/Cadastro/initialValuesForm";
 
