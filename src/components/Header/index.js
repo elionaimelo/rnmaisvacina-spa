@@ -184,11 +184,9 @@ export const Header = ({ auth }) => {
                   </BreadcrumbItem>
 
                   <BreadcrumbItem
-                    isCurrentPage={
-                      router.pathname == "/agendamento" ? true : false
-                    }
+                    isCurrentPage={router.pathname == "/painel" ? true : false}
                   >
-                    <BreadcrumbLink href="/agendamento">
+                    <BreadcrumbLink href="/painel">
                       {" "}
                       <Box
                         as="button"
@@ -241,9 +239,6 @@ export const Header = ({ auth }) => {
                   onClick={onOpen}
                 >
                   Certificado de Vacinação
-                  {/* <Link href="/document/certificado_vacinacao">
-                    <a>Certificado de Vacinação</a>
-                  </Link> */}
                 </ButtonHeader>
                 <ButtonHeader
                   boxSize={size}

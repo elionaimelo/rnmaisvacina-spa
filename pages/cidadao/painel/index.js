@@ -10,16 +10,20 @@ import {
   Flex,
   Heading,
   Container,
+  Text,
 } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 
 import { CardContact, CardVacina } from "src/components";
-import { TabPage, TabTitle } from "@/components/Agendamento/style";
-import Vacinas from "src/objects/Agendamento/Vacinas.json";
+import { TabPage, TabTitle, AddButton } from "@/components/Painel/style";
+import Vacinas from "src/objects/Painel/Vacinas.json";
 
 export default function Agendamento() {
   const vacinas = Vacinas.vacinas;
   const justifyWrap = useBreakpointValue({ base: "center", md: "row" });
   const overflow = useBreakpointValue({ base: "auto", md: "hidden" });
+  const flexBtn = useBreakpointValue({ base: "column", md: "row" });
+  const marginBtn = useBreakpointValue({ base: "auto", md: "0" });
 
   return (
     <>
@@ -43,7 +47,20 @@ export default function Agendamento() {
           </TabList>
           <TabPanels>
             <TabPage>
-              <TabTitle>Agendamentos</TabTitle>
+              <Flex direction={flexBtn} justify={"space-between"} mb={8}>
+                <TabTitle>Agendamentos</TabTitle>
+                <AddButton leftIcon={<AddIcon />} m={marginBtn}>
+                  <Link href="/cidadao/painel/adicionar_agendamento">
+                    <a>Adicionar Agendamento</a>
+                  </Link>
+                </AddButton>
+              </Flex>
+              <Text align={"center"} color={"#a7a7a7"}>
+                Não há agendamentos futuros cadastrados.
+              </Text>
+              <Text align={"center"} color={"#a7a7a7"}>
+                Seus próximos agendamentos serão mostrados aqui.
+              </Text>
             </TabPage>
             <TabPage>
               <TabTitle>Vacinas</TabTitle>
@@ -87,7 +104,17 @@ export default function Agendamento() {
               </Flex>
             </TabPage>
             <TabPage>
-              <TabTitle>Dependentes</TabTitle>
+              <Flex direction={flexBtn} justify={"space-between"} mb={8}>
+                <TabTitle>Dependentes</TabTitle>
+                <AddButton leftIcon={<AddIcon />} m={marginBtn}>
+                  <Link href="/cidadao/painel/adicionar_dependente">
+                    <a>Adicionar Dependente</a>
+                  </Link>
+                </AddButton>
+              </Flex>
+              <Text align={"center"} color={"#a7a7a7"}>
+                Nenhum dependente cadastrado.
+              </Text>
             </TabPage>
           </TabPanels>
         </Tabs>
