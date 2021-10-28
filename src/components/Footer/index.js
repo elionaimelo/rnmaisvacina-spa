@@ -1,7 +1,6 @@
-import { ContainerFooter } from "./style";
 import Image from "next/image";
-import { Flex, Box } from "@chakra-ui/react";
-import { useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Box, useBreakpointValue } from "@chakra-ui/react";
+import { ContainerFooter } from "./style";
 
 export const Footer = () => {
   const direction = useBreakpointValue({ base: "column", md: "row" });

@@ -7,15 +7,19 @@ import {
   TabPanels,
   Wrap,
   useBreakpointValue,
+  Flex,
+  Heading,
+  Container,
 } from "@chakra-ui/react";
 
-import { TabTitle, CardContact, CardVacina } from "src/components";
-import { Content, TabPage } from "src/styles/agendamento.style";
+import { CardContact, CardVacina } from "src/components";
+import { TabPage, TabTitle } from "@/components/Agendamento/style";
 import Vacinas from "src/objects/Agendamento/Vacinas.json";
 
 export default function Agendamento() {
   const vacinas = Vacinas.vacinas;
   const justifyWrap = useBreakpointValue({ base: "center", md: "row" });
+  const overflow = useBreakpointValue({ base: "auto", md: "hidden" });
 
   return (
     <>
@@ -23,9 +27,15 @@ export default function Agendamento() {
         <title>Agendamento</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Content>
-        <Tabs variant="enclosed">
-          <TabList bg="#00B3F3" color="#fff" border={"none"}>
+      <Container maxW="container.xl">
+        <Tabs variant="enclosed" mt={"-41px"}>
+          <TabList
+            bg="#00B3F3"
+            color="#fff"
+            border={"none"}
+            overflowX={overflow}
+            overflowY={"hidden"}
+          >
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Agendamentos</Tab>
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Vacinas</Tab>
             <Tab _selected={{ color: "#00B3F3", bg: "#fff" }}>Contatos</Tab>
@@ -43,8 +53,10 @@ export default function Agendamento() {
                     <CardVacina
                       nome={el.nome}
                       dataVacinacao={el.data_vacinacao}
-                      segundaDose={el.segunda_dose}
-                      dataVacinacaoSegundaDose={el.data_vacinacao_segunda_dose}
+                      segundaDose={el.dose_complementar}
+                      dataVacinacaoSegundaDose={
+                        el.data_vacinacao_dose_complementar
+                      }
                       inicioPrevisao={el.inicio_previsao}
                       fimPrevisao={el.fim_previsao}
                       fabricante={el.fabricante}
@@ -59,9 +71,11 @@ export default function Agendamento() {
             <TabPage>
               <TabTitle>Contatos</TabTitle>
               <CardContact municipio="Natal" />
-              <section className="data-source">
-                <h5>Fonte dos dados:</h5>
-                <div className="data-source-links">
+              <Flex mt={"20px"} className="data-source">
+                <Heading size="sm" color="#808080" fontWeight={"600"}>
+                  Fonte dos dados:
+                </Heading>
+                <Flex ms={"8px"} direction="column" color="#007bff">
                   {" "}
                   <Link href={"https://www.cosemsrn.org.br/secretarias/"}>
                     <a>COSEMS/RN</a>
@@ -69,15 +83,15 @@ export default function Agendamento() {
                   <Link href={"http://www.saude.rn.gov.br/"}>
                     <a>SESAP/RN</a>
                   </Link>
-                </div>
-              </section>
+                </Flex>
+              </Flex>
             </TabPage>
             <TabPage>
               <TabTitle>Dependentes</TabTitle>
             </TabPage>
           </TabPanels>
         </Tabs>
-      </Content>
+      </Container>
     </>
   );
 }

@@ -2,9 +2,10 @@
   "vacinas": [
     {
       "nome": "COVID-19 - Pfizer",
+      "dose": 1,
       "data_vacinacao": "12/08/2021",
-      "segunda_dose": true,
-      "data_vacinacao_segunda_dose": "06/10/2021",
+      "dose_complementar": true,
+      "data_vacinacao_dose_complementar": "06/10/2021",
       "inicio_previsao": "05/10/2021",
       "fim_previsao": "08/11/2021",
       "fabricante": "PFIZER MANUFACTURING BELGIUM NV - BELGICA",
@@ -13,10 +14,24 @@
       "estabelecimento_saude": "HOSPITAL MATERNIDADE DO DIVINO AMOR"
     },
     {
-      "nome": "VIROSE X",
+      "nome": "COVID-19 - Pfizer",
+      "dose": 2,
+      "data_vacinacao": "23/11/2021",
+      "dose_complementar": false,
+      "data_vacinacao_dose_complementar": "06/10/2021",
+      "inicio_previsao": "05/10/2021",
+      "fim_previsao": "08/11/2021",
+      "fabricante": "PFIZER MANUFACTURING BELGIUM NV - BELGICA",
+      "lote": "31065BD",
+      "profissional_aplicador": "Rita Catarina Tonico da Cunha",
+      "estabelecimento_saude": "HOSPITAL MATERNIDADE DO DIVINO AMOR"
+    },
+    {
+      "nome": "VACINA X",
+      "dose": 1,
       "data_vacinacao": "12/08/2021",
-      "segunda_dose": false,
-      "data_vacinacao_segunda_dose": null,
+      "dose_complementar": false,
+      "data_vacinacao_dose_complementar": null,
       "inicio_previsao": null,
       "fim_previsao": null,
       "fabricante": "fabricante X",
@@ -25,10 +40,11 @@
       "estabelecimento_saude": "hospital X"
     },
     {
-      "nome": "VIROSE Y",
+      "nome": "VACINA Y",
       "data_vacinacao": "12/08/2021",
-      "segunda_dose": true,
-      "data_vacinacao_segunda_dose": null,
+      "dose": 1,
+      "dose_complementar": true,
+      "data_vacinacao_dose_complementar": null,
       "inicio_previsao": "05/10/2021",
       "fim_previsao": "08/11/2021",
       "fabricante": "fabricante y",
