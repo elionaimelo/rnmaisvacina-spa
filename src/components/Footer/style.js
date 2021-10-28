@@ -12,9 +12,7 @@ export const ContainerFooter = styled.footer`
 
   @media (min-width: 600px) {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 100%;
   }
 
   h5 {

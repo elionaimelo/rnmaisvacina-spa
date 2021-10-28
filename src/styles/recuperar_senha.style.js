@@ -5,7 +5,7 @@ export const Content = styled.div`
     /* max-width: 560px; */
     margin: auto;
     padding: 3rem 5rem;
-    color: #345b77;
+    color: ${({ theme }) => theme.colors.secondary.main.color};
   }
 
   .title {
