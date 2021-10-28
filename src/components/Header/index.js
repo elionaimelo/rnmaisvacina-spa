@@ -8,13 +8,23 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Container,
+  Flex,
+  useBreakpointValue,
+  Stack,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { FlexCustom, Title } from "./header.style";
+import {
+  FlexCustom,
+  Title,
+  ButtonHeader,
+  ContainerHeader,
+} from "./header.style";
 // import logo from "src/assets/images/logo.svg";
 
 export const Header = ({ auth }) => {
   const router = useRouter();
+  const direction = useBreakpointValue({ base: "column", lg: "row" });
+  const size = useBreakpointValue({ base: "full", lg: "min" });
 
   const style = {
     marginRight: 10,
@@ -22,7 +32,7 @@ export const Header = ({ auth }) => {
   };
 
   return (
-    <>
+    <ContainerHeader>
       <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
         <Container maxW="container.xl">
           <Link href="/">
@@ -44,7 +54,8 @@ export const Header = ({ auth }) => {
           bg="#00B3F3"
           w="100%"
           color="#fff"
-          h="220px"
+          minH="220px"
+          p={5}
         >
           <Container maxW="container.xl" h="100%">
             <FlexCustom direction="column" justifyContent="center">
@@ -55,7 +66,7 @@ export const Header = ({ auth }) => {
                   separator={<ChevronRightIcon boxSize={5} color="#fff" />}
                 >
                   <BreadcrumbItem>
-                    <BreadcrumbLink href="/inicio">
+                    <BreadcrumbLink href="/">
                       <Box
                         as="button"
                         py={1}
@@ -122,10 +133,16 @@ export const Header = ({ auth }) => {
           bg="#00B3F3"
           w="100%"
           color="#fff"
-          h="220px"
+          minH="220px"
+          p={5}
         >
           <Container maxW="container.xl" h="100%">
-            <FlexCustom direction="column" justifyContent="center">
+            <FlexCustom
+              w={{ sm: "90%", md: "70%", lg: "auto" }}
+              mx={{ base: "auto", lg: "0" }}
+              direction="column"
+              justifyContent="center"
+            >
               <div>
                 <Breadcrumb
                   spacing="8px"
@@ -133,7 +150,7 @@ export const Header = ({ auth }) => {
                   separator={<ChevronRightIcon boxSize={5} color="#fff" />}
                 >
                   <BreadcrumbItem>
-                    <BreadcrumbLink href="/inicio">
+                    <BreadcrumbLink href="/">
                       <Box
                         as="button"
                         py={1}
@@ -168,6 +185,49 @@ export const Header = ({ auth }) => {
                   </BreadcrumbItem>
                 </Breadcrumb>
               </div>
+              <Flex
+                align={{ base: "flex-start", lg: "center" }}
+                justify="flex-start"
+                direction={direction}
+              >
+                <Flex align="center" mb={{ base: "4", lg: "0" }}>
+                  <Image
+                    src="/assets/images/profile.png"
+                    layout="fixed"
+                    width={80}
+                    height={80}
+                    alt=""
+                  />
+                  <Flex direction="column" ms={4} me={20}>
+                    <span>Olá,</span>
+                    <span>Nome do usuário</span>
+                  </Flex>
+                </Flex>
+                <ButtonHeader boxSize={size} bg="#fff" color="#00b3f3">
+                  Perfil
+                </ButtonHeader>
+                <ButtonHeader
+                  boxSize={size}
+                  colorScheme="#00b3f3"
+                  variant="outline"
+                >
+                  Declaração de Autocadastro
+                </ButtonHeader>
+                <ButtonHeader
+                  boxSize={size}
+                  colorScheme="#00b3f3"
+                  variant="outline"
+                >
+                  Certificado de Vacinação
+                </ButtonHeader>
+                <ButtonHeader
+                  boxSize={size}
+                  colorScheme="#00b3f3"
+                  variant="outline"
+                >
+                  Sair
+                </ButtonHeader>
+              </Flex>
               <div className="header-bottom-text">
                 <Title>Cartão Digital de Vacinação</Title>
               </div>
@@ -175,7 +235,7 @@ export const Header = ({ auth }) => {
           </Container>
         </Box>
       )}
-    </>
+    </ContainerHeader>
   );
 };
 

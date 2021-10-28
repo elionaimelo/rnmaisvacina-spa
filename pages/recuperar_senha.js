@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 import { Content } from "src/styles/recuperar_senha.style";
-import { Header, Footer } from "src/components";
 
 export default function RecuperarSenha() {
   const initialValues = {
@@ -59,7 +58,6 @@ export default function RecuperarSenha() {
   }
   return (
     <Content>
-      <Header />
       <main>
         <h1 className="title">Redefinição de senha</h1>
         <Formik
@@ -225,7 +223,6 @@ export default function RecuperarSenha() {
           )}
         </Formik>
       </main>
-      <Footer />
     </Content>
   );
 }

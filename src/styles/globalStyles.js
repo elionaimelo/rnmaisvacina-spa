@@ -5,10 +5,6 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100vw;
     font-family: "Jost";
     min-height: 100vh !important;
-    
-    @media (min-width: 600px) {
-      padding-bottom: 10rem;
-    }
   }
 
   #__next {
