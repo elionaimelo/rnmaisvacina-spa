@@ -65,9 +65,10 @@ export default function Agendamento() {
             <TabPage>
               <TabTitle>Vacinas</TabTitle>
               <Wrap spacing="20px" justify={justifyWrap}>
-                {vacinas.map((el) => {
+                {vacinas.map((el, index) => {
                   return (
                     <CardVacina
+                      key={index}
                       nome={el.nome}
                       dataVacinacao={el.data_vacinacao}
                       segundaDose={el.dose_complementar}

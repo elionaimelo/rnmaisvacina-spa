@@ -145,13 +145,13 @@ export default function AdicionarDependente() {
                         type="number"
                         value={values.cns}
                         onChange={(e) => {
-                          //   const formatted = cnsMask(values.cns);
-                          //   setFieldValue("cns", formatted);
+                          const formatted = cnsMask(values.cns);
+                          setFieldValue("cns", formatted);
                           handleChange(e);
                         }}
                         onBlur={(e) => {
-                          //   const formatted = cnsMask(values.cns);
-                          //   setFieldValue("cns", formatted);
+                          const formatted = cnsMask(values.cns);
+                          setFieldValue("cns", formatted);
                           handleBlur(e);
                         }}
                       />
@@ -237,11 +237,11 @@ export default function AdicionarDependente() {
                               <section className="subform">
                                 <HStack>
                                   <Flex flexDirection="column">
-                                    {vetor.map((item) => {
+                                    {vetor.map((item, index) => {
                                       const nameItem = formattedName(item);
                                       return (
                                         <Checkbox
-                                          key={nameItem}
+                                          key={nameItem + index}
                                           value={nameItem}
                                           {...field}
                                           id={nameItem}
@@ -270,11 +270,11 @@ export default function AdicionarDependente() {
                                 <section className="subform">
                                   <HStack>
                                     <Flex flexDirection="column">
-                                      {vetor.map((item) => {
+                                      {vetor.map((item, index) => {
                                         const nameItem = formattedName(item);
                                         return (
                                           <Checkbox
-                                            key={nameItem}
+                                            key={nameItem + index}
                                             value={nameItem}
                                             {...field}
                                             id={nameItem}

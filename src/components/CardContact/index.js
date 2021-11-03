@@ -17,24 +17,24 @@ export function CardContact({ municipio }) {
         <section className="info">
           <Text fontSize="lg">Telefone(s):</Text>
           <ul className="info-list">
-            {phone.map((item) => (
-              <li>{item}</li>
+            {phone.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
         </section>
         <section className="info">
           <Text fontSize="lg">E-mail(s):</Text>
           <ul className="info-list">
-            {email.map((item) => (
-              <li>{item}</li>
+            {email.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
         </section>
         <section className="info">
           <Text fontSize="lg">Site(s):</Text>
           <ul className="info-list">
-            {site.map((item) => (
-              <li>
+            {site.map((item, index) => (
+              <li key={index}>
                 <Link href={item}>
                   <a>{item}</a>
                 </Link>
