@@ -1,15 +1,14 @@
 import Head from "next/head";
 import {
-  Button,
-  FormControl,
   FormLabel,
   FormErrorMessage,
-  Input,
   Select,
   FormHelperText,
+  Heading,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
-import { Content } from "@/components/RecuperarSenha/style";
+import { Forms } from "src/components";
+import { cpfMask } from "src/services/validation.js";
 
 export default function RecuperarSenha() {
   const initialValues = {
@@ -20,15 +19,6 @@ export default function RecuperarSenha() {
     group: "",
     city: "",
   };
-
-  function cpfMask(value) {
-    return value
-      .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
-      .replace(/(\d{3})(\d)/, "$1.$2") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})/, "$1-$2")
-      .replace(/(-\d{2})\d+?$/, "$1"); // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
-  }
 
   function validateData(values) {
     const errors = {};
@@ -63,175 +53,182 @@ export default function RecuperarSenha() {
         <title>Recuperar Senha</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Content>
-        <main>
-          <h1 className="title">Redefinição de senha</h1>
-          <Formik
-            initialValues={initialValues}
-            validate={(values) => validateData(values)}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-              }, 1000);
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              isSubmitting,
-              setFieldValue,
-              handleBlur,
-            }) => (
-              <Form className="agendamento-form">
-                <Field name="cpf">
-                  {({ field, form }) => (
-                    <FormControl isInvalid={errors.cpf && touched.cpf}>
-                      <FormLabel htmlFor="cpf">CPF</FormLabel>
-                      <Input
-                        {...field}
-                        id="cpf"
-                        maxLength="14"
-                        value={values.cpf}
-                        onChange={(e) => {
-                          const formatted = cpfMask(values.cpf);
-                          setFieldValue("cpf", formatted);
-                          handleChange(e);
-                        }}
-                        onBlur={(e) => {
-                          const formatted = cpfMask(values.cpf);
-                          setFieldValue("cpf", formatted);
-                          handleBlur(e);
-                        }}
-                      />
-                      <FormErrorMessage>{errors.cpf}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
+      <Forms maxW="container.md" ms={0} py={"3rem"} px={"5rem"}>
+        <Heading size="md" mb={"20px"} fontWeight={800}>
+          Redefinição de senha
+        </Heading>
+        <Formik
+          initialValues={initialValues}
+          validate={(values) => validateData(values)}
+          onSubmit={(values, actions) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              actions.setSubmitting(false);
+            }, 1000);
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            isSubmitting,
+            setFieldValue,
+            handleBlur,
+          }) => (
+            <Form className="agendamento-form">
+              <Field name="cpf">
+                {({ field, form }) => (
+                  <Forms.FormControl isInvalid={errors.cpf && touched.cpf}>
+                    <FormLabel htmlFor="cpf">CPF</FormLabel>
+                    <Forms.StylishInput
+                      {...field}
+                      id="cpf"
+                      maxLength="14"
+                      value={values.cpf}
+                      onChange={(e) => {
+                        const formatted = cpfMask(values.cpf);
+                        setFieldValue("cpf", formatted);
+                        handleChange(e);
+                      }}
+                      onBlur={(e) => {
+                        const formatted = cpfMask(values.cpf);
+                        setFieldValue("cpf", formatted);
+                        handleBlur(e);
+                      }}
+                    />
+                    <FormErrorMessage>{errors.cpf}</FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
 
-                <Field name="dateBirth">
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={errors.dateBirth && touched.dateBirth}
+              <Field name="dateBirth">
+                {({ field, form }) => (
+                  <Forms.FormControl
+                    isInvalid={errors.dateBirth && touched.dateBirth}
+                  >
+                    <FormLabel htmlFor="dateBirth">
+                      DATA DE NASCIMENTO
+                    </FormLabel>
+                    <Forms.StylishInput
+                      {...field}
+                      type="date"
+                      id="dateBirth"
+                      maxLength="14"
+                      value={values.dateBirth}
+                      onChange={(e) => {
+                        handleChange(e);
+                      }}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                      }}
+                    />
+                    <FormErrorMessage>{errors.dateBirth}</FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
+
+              <Field name="password">
+                {({ field, form }) => (
+                  <Forms.FormControl
+                    isInvalid={errors.password && touched.password}
+                  >
+                    <FormLabel htmlFor="password">NOVA SENHA</FormLabel>
+                    <Forms.StylishInput
+                      {...field}
+                      id="password"
+                      type="password"
+                    />
+                    <FormHelperText>
+                      Sua senha deve ter entre 6 e 20 dígitos
+                    </FormHelperText>
+                    <FormErrorMessage>{errors.password}</FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
+
+              <Field name="confirmPassword">
+                {({ field, form }) => (
+                  <Forms.FormControl
+                    isInvalid={
+                      errors.confirmPassword && touched.confirmPassword
+                    }
+                  >
+                    <FormLabel htmlFor="confirmPassword">
+                      CONFIRMAÇÃO DE SENHA
+                    </FormLabel>
+                    <Forms.StylishInput
+                      {...field}
+                      id="confirmPassword"
+                      type="password"
+                    />
+                    <FormErrorMessage>
+                      {errors.confirmPassword}
+                    </FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
+
+              <Field name="group">
+                {({ field, form }) => (
+                  <Forms.FormControl isInvalid={errors.group && touched.group}>
+                    <FormLabel htmlFor="group">
+                      GRUPO QUE VOCÊ PERTENCE
+                    </FormLabel>
+                    <Select
+                      {...field}
+                      placeholder="Selecione"
+                      id="group"
+                      value={values.group}
+                      size="lg"
                     >
-                      <FormLabel htmlFor="dateBirth">
-                        DATA DE NASCIMENTO
-                      </FormLabel>
-                      <Input
-                        {...field}
-                        type="date"
-                        id="dateBirth"
-                        maxLength="14"
-                        value={values.dateBirth}
-                        onChange={(e) => {
-                          handleChange(e);
-                        }}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                        }}
-                      />
-                      <FormErrorMessage>{errors.dateBirth}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                    </Select>
+                    <FormErrorMessage>{errors.group}</FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
 
-                <Field name="password">
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={errors.password && touched.password}
+              <Field name="city">
+                {({ field, form }) => (
+                  <Forms.FormControl
+                    isInvalid={errors.city && touched.city}
+                    // isRequired
+                  >
+                    <FormLabel htmlFor="city">
+                      QUAL SEU MUNICÍPIO DE RESIDÊNCIA
+                    </FormLabel>
+                    <Select
+                      {...field}
+                      placeholder="Selecione"
+                      id="city"
+                      value={values.city}
+                      size="lg"
                     >
-                      <FormLabel htmlFor="password">NOVA SENHA</FormLabel>
-                      <Input {...field} id="password" type="password" />
-                      <FormHelperText>
-                        Sua senha deve ter entre 6 e 20 dígitos
-                      </FormHelperText>
-                      <FormErrorMessage>{errors.password}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                    </Select>
+                    <FormErrorMessage>{errors.city}</FormErrorMessage>
+                  </Forms.FormControl>
+                )}
+              </Field>
 
-                <Field name="confirmPassword">
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={
-                        errors.confirmPassword && touched.confirmPassword
-                      }
-                    >
-                      <FormLabel htmlFor="confirmPassword">
-                        CONFIRMAÇÃO DE SENHA
-                      </FormLabel>
-                      <Input {...field} id="confirmPassword" type="password" />
-                      <FormErrorMessage>
-                        {errors.confirmPassword}
-                      </FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-
-                <Field name="group">
-                  {({ field, form }) => (
-                    <FormControl isInvalid={errors.group && touched.group}>
-                      <FormLabel htmlFor="group">
-                        GRUPO QUE VOCÊ PERTENCE
-                      </FormLabel>
-                      <Select
-                        {...field}
-                        placeholder="Selecione"
-                        id="group"
-                        value={values.group}
-                        size="lg"
-                      >
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                      </Select>
-                      <FormErrorMessage>{errors.group}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-
-                <Field name="city">
-                  {({ field, form }) => (
-                    <FormControl
-                      isInvalid={errors.city && touched.city}
-                      // isRequired
-                    >
-                      <FormLabel htmlFor="city">
-                        QUAL SEU MUNICÍPIO DE RESIDÊNCIA
-                      </FormLabel>
-                      <Select
-                        {...field}
-                        placeholder="Selecione"
-                        id="city"
-                        value={values.city}
-                        size="lg"
-                      >
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                      </Select>
-                      <FormErrorMessage>{errors.city}</FormErrorMessage>
-                    </FormControl>
-                  )}
-                </Field>
-
-                {/* habilitar depois da validaçao dos dados*/}
-                <Button
-                  // isDisabled
-                  mt={4}
-                  isLoading={isSubmitting}
-                  type="submit"
-                  className="form-button"
-                >
-                  Alterar senha
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        </main>
-      </Content>
+              {/* habilitar depois da validaçao dos dados*/}
+              <Forms.Button
+                // isDisabled
+                mt={4}
+                isLoading={isSubmitting}
+                type="submit"
+              >
+                Alterar senha
+              </Forms.Button>
+            </Form>
+          )}
+        </Formik>
+      </Forms>
     </>
   );
 }

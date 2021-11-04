@@ -3,29 +3,19 @@ import Link from "next/link";
 
 //import da lib de interface e form (chakra, formik)
 import {
-  Button,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Input,
   Flex,
-  Container,
   Box,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
-import { StylishInput } from "./style";
+import { Forms } from "src/components";
+import { cpfMask } from "src/services/validation.js";
 
-function FormLogin() {
+export function FormLogin() {
   const [isDisabled, setIsDisabled] = useState(true);
 
-  function cpfMask(value) {
-    return value
-      .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
-      .replace(/(\d{3})(\d)/, "$1.$2") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})/, "$1-$2")
-      .replace(/(-\d{2})\d+?$/, "$1"); // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
-  }
   function validateData(values) {
     const errors = {};
     if (!values.cpf) {
@@ -54,7 +44,7 @@ function FormLogin() {
     return;
   };
   return (
-    <Container maxW="container.xl" my="10">
+    <Forms maxW="container.md" ms={0} py={"3rem"} px={"5rem"}>
       <Box maxW="sm">
         <Formik
           initialValues={{ cpf: "", password: "" }}
@@ -75,12 +65,12 @@ function FormLogin() {
             setFieldValue,
             handleBlur,
           }) => (
-            <Form className="agendamento-form">
+            <Form>
               <Field name="cpf">
                 {({ field, form }) => (
                   <FormControl isInvalid={errors.cpf && touched.cpf}>
                     <FormLabel htmlFor="cpf">CPF</FormLabel>
-                    <StylishInput
+                    <Forms.StylishInput
                       {...field}
                       id="cpf"
                       maxLength="14"
@@ -107,32 +97,34 @@ function FormLogin() {
                     mt="3"
                   >
                     <FormLabel htmlFor="password">SENHA</FormLabel>
-                    <StylishInput {...field} id="password" type="password" />
+                    <Forms.StylishInput
+                      {...field}
+                      id="password"
+                      type="password"
+                    />
                     <FormErrorMessage>{errors.password}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
               <Flex flexDirection="column" mt="2">
-                <Link href="/recuperar_senha">
-                  <a className="forgot-password">Esqueci minha senha</a>
+                <Link href="/cidadao/recuperar_senha">
+                  <a>Esqueci minha senha</a>
                 </Link>
+
                 {/* habilitar depois da validaçao dos dados*/}
-                <Button
+                <Forms.Button
                   isDisabled={isDisabled}
                   mt={4}
                   isLoading={isSubmitting}
                   type="submit"
-                  className="form-button"
                 >
                   Entrar
-                </Button>
+                </Forms.Button>
               </Flex>
             </Form>
           )}
         </Formik>
       </Box>
-    </Container>
+    </Forms>
   );
 }
-
-export default FormLogin;
