@@ -2,7 +2,7 @@
 import Head from "next/head";
 
 //components
-import FormLogin from "@/components/FormLogin";
+import { FormLogin } from "src/components";
 
 export default function Home() {
   return (

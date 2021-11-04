@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
-import { CardContact, CardVacina } from "src/components";
-import { TabPage, TabTitle, AddButton } from "@/components/Painel/style";
+import { CardContact, CardVacina, TabPage } from "src/components";
 import Vacinas from "src/objects/Painel/Vacinas.json";
 
 export default function Agendamento() {
@@ -48,12 +47,12 @@ export default function Agendamento() {
           <TabPanels>
             <TabPage>
               <Flex direction={flexBtn} justify={"space-between"} mb={8}>
-                <TabTitle>Agendamentos</TabTitle>
-                <AddButton leftIcon={<AddIcon />} m={marginBtn}>
+                <TabPage.Title>Agendamentos</TabPage.Title>
+                <TabPage.AddButton leftIcon={<AddIcon />} m={marginBtn}>
                   <Link href="/cidadao/painel/adicionar_agendamento">
                     <a>Adicionar Agendamento</a>
                   </Link>
-                </AddButton>
+                </TabPage.AddButton>
               </Flex>
               <Text align={"center"} color={"#a7a7a7"}>
                 Não há agendamentos futuros cadastrados.
@@ -63,11 +62,12 @@ export default function Agendamento() {
               </Text>
             </TabPage>
             <TabPage>
-              <TabTitle>Vacinas</TabTitle>
+              <TabPage.Title>Vacinas</TabPage.Title>
               <Wrap spacing="20px" justify={justifyWrap}>
-                {vacinas.map((el) => {
+                {vacinas.map((el, index) => {
                   return (
                     <CardVacina
+                      key={index}
                       nome={el.nome}
                       dataVacinacao={el.data_vacinacao}
                       segundaDose={el.dose_complementar}
@@ -86,7 +86,7 @@ export default function Agendamento() {
               </Wrap>
             </TabPage>
             <TabPage>
-              <TabTitle>Contatos</TabTitle>
+              <TabPage.Title>Contatos</TabPage.Title>
               <CardContact municipio="Natal" />
               <Flex mt={"20px"} className="data-source">
                 <Heading size="sm" color="#808080" fontWeight={"600"}>
@@ -105,12 +105,12 @@ export default function Agendamento() {
             </TabPage>
             <TabPage>
               <Flex direction={flexBtn} justify={"space-between"} mb={8}>
-                <TabTitle>Dependentes</TabTitle>
-                <AddButton leftIcon={<AddIcon />} m={marginBtn}>
+                <TabPage.Title>Dependentes</TabPage.Title>
+                <TabPage.AddButton leftIcon={<AddIcon />} m={marginBtn}>
                   <Link href="/cidadao/painel/adicionar_dependente">
                     <a>Adicionar Dependente</a>
                   </Link>
-                </AddButton>
+                </TabPage.AddButton>
               </Flex>
               <Text align={"center"} color={"#a7a7a7"}>
                 Nenhum dependente cadastrado.

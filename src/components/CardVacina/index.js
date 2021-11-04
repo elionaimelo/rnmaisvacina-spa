@@ -13,7 +13,6 @@ import {
   AlertDialogOverlay,
   AlertDialogContent,
   useDisclosure,
-  Divider,
   FormLabel,
   Input,
   useBreakpointValue,
@@ -274,18 +273,6 @@ export function CardVacina({
               </WrapItem>
             </Wrap>
           </AlertDialogBody>
-          <Divider />
-          <Button
-            width="100%"
-            height="50px"
-            bg="#fff"
-            color="#00b3f3"
-            ref={cancelRef}
-            onClick={onClose}
-            fontWeight={400}
-          >
-            Fechar
-          </Button>
         </AlertDialogContent>
       </ModalContent>
     </>
