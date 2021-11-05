@@ -9,7 +9,9 @@ export default function TemplateDocs({ ...props }) {
     content: () => componentRef.current,
   });
   useEffect(() => {
-    handlePrint();
+    setTimeout(() => {
+      handlePrint();
+    }, 500);
   }, []);
   return (
     <Container maxW={"720px"} m={"auto"} py={10} ref={componentRef}>
