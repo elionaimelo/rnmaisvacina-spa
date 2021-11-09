@@ -17,6 +17,7 @@ Forms.Button = styled(Button)`
   color: #fff;
   height: 60px !important;
   width: 100% !important;
+  max-width: 300px !important;
 `;
 
 Forms.StylishInput = styled(Input)`

@@ -9,11 +9,14 @@ import {
   Flex,
   Box,
   Heading,
+  Button,
 } from "@chakra-ui/react";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import { Formik, Field, Form } from "formik";
 import { Forms } from "src/components";
 
-import GrupoPrioritario from "src/objects/Cadastro/GrupoPrioritario";
+import subforms from "src/objects/Cadastro/subforms.json";
+import forms from "src/objects/Cadastro/forms.json";
 import initialValuesForm from "src/objects/AdicionarDependente/initialValuesForm";
 import {
   cpfMask,
@@ -23,7 +26,9 @@ import {
 } from "src/services/validation.js";
 
 export default function AdicionarDependente() {
-  const initialValues = {
+  const GrupoPrioritario = forms.grupoPrioritario;
+
+  const initialValuesDependente = {
     ...initialValuesForm,
   };
 
@@ -62,18 +67,28 @@ export default function AdicionarDependente() {
   return (
     <>
       <Head>
-        <title>Adicionar Dependente</title>
+        <title>Cadastro de Dependente</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Forms maxW="container.md" ms={0} py={"3rem"} px={"5rem"}>
         <Box>
+          <Button
+            color={"#00b3f3"}
+            fontSize="lg"
+            mb={"15px"}
+            leftIcon={<ArrowBackIcon />}
+            variant="link"
+            onClick={() => document.location.assign("/cidadao/painel")}
+          >
+            Voltar
+          </Button>
           <Heading>Cadastro de Dependente</Heading>
           <Box bg={"#E2E3E5"} p={4} borderRadius={4} my={3}>
             Os campos indicados com * são obrigatórios.
           </Box>
         </Box>
         <Formik
-          initialValues={initialValues}
+          initialValues={initialValuesDependente}
           validate={(values) => validateData(values)}
           onSubmit={(values, actions) => {
             console.log(JSON.stringify(values, null, 2));
@@ -196,7 +211,8 @@ export default function AdicionarDependente() {
 
               <Field name="priorityGroup" type="checkbox">
                 {({ field, form }) => {
-                  function checkbox(label, subform, vetor) {
+                  function checkbox(label, subform, nomeVetor) {
+                    const vetor = subforms[nomeVetor];
                     const nameField = formattedName(label);
                     return (
                       <>
@@ -244,7 +260,7 @@ export default function AdicionarDependente() {
                             </section>
                           </div>
                         ) : (
-                          vetor !== null && (
+                          vetor !== undefined && (
                             <div className="subform-hide">
                               <FormLabel ps={5} my={2}>
                                 FAVOR, INFORME SEU GRUPO PRIORITÁRIO NA LISTA

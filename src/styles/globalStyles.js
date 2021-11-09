@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     max-width: 100vw;
-    font-family: "Jost";
+    font-family: "Jost" !important;
     min-height: 100vh !important;
   }
 

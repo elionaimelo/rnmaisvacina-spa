@@ -10,11 +10,11 @@ import {
   CheckboxGroup,
   HStack,
   Flex,
-  Container,
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 
-import GrupoPrioritario from "src/objects/Cadastro/GrupoPrioritario";
+import subforms from "src/objects/Cadastro/subforms.json";
+import forms from "src/objects/Cadastro/forms.json";
 import initialValuesForm from "src/objects/Cadastro/initialValuesForm";
 import { Forms } from "src/components";
 import {
@@ -25,6 +25,7 @@ import {
 } from "src/services/validation.js";
 
 export default function Cadastro() {
+  const GrupoPrioritario = forms.grupoPrioritario;
   const initialValues = {
     ...initialValuesForm,
   };
@@ -240,7 +241,9 @@ export default function Cadastro() {
 
               <Field name="priorityGroup" type="checkbox">
                 {({ field, form }) => {
-                  function checkbox(label, subform, vetor) {
+                  function checkbox(label, subform, nomeVetor) {
+                    const vetor = subforms[nomeVetor];
+                    console.log(vetor);
                     const nameField = formattedName(label);
                     return (
                       <>
@@ -288,7 +291,7 @@ export default function Cadastro() {
                             </section>
                           </Box>
                         ) : (
-                          vetor !== null && (
+                          vetor !== undefined && (
                             <Box className="subform-hide">
                               <FormLabel ps={5} my={2}>
                                 FAVOR, INFORME SEU GRUPO PRIORITÁRIO NA LISTA
