@@ -1,0 +1,80 @@
+{
+  "locais": [
+    {
+      "nome": "PSF PARQUE INDUSTRIAL",
+      "endereco": "RUA AEROPORTO DE PELOTAS, 111, CONJUNTO AEROPORTO, 59149350, Parnamirim",
+      "tipo": "ponto fixo",
+      "datasDisponiveis": [
+        {
+          "data": "08/11/2021",
+          "horariosDisponiveis": [
+            { "horario": "08:00", "vagas": 2 },
+            { "horario": "08:15", "vagas": 3 },
+            { "horario": "08:30", "vagas": 2 },
+            { "horario": "08:45", "vagas": 2 },
+            { "horario": "09:00", "vagas": 3 },
+            { "horario": "09:15", "vagas": 1 },
+            { "horario": "09:30", "vagas": 3 },
+            { "horario": "09:45", "vagas": 2 },
+            { "horario": "10:00", "vagas": 1 },
+            { "horario": "10:15", "vagas": 2 },
+            { "horario": "10:30", "vagas": 2 },
+            { "horario": "10:45", "vagas": 3 },
+            { "horario": "11:00", "vagas": 2 },
+            { "horario": "11:15", "vagas": 2 }
+          ]
+        },
+        {
+          "data": "09/11/2021",
+          "horariosDisponiveis": [
+            { "horario": "08:00", "vagas": 2 },
+            { "horario": "08:15", "vagas": 3 },
+            { "horario": "08:30", "vagas": 2 },
+            { "horario": "08:45", "vagas": 2 },
+            { "horario": "09:00", "vagas": 3 },
+            { "horario": "09:15", "vagas": 1 },
+            { "horario": "11:15", "vagas": 2 }
+          ]
+        }
+      ],
+      "vacina": {
+        "nome": "COVID-19",
+        "grupoPrioritario": "Outros - População Geral",
+        "faixaEtaria": "A partir de 18 anos",
+        "fabricante": "Coronavac/Butantan"
+      }
+    },
+    {
+      "nome": "gsdrgsgres",
+      "endereco": "RUA AEROPORTO DE PELOTAS, 111, CONJUNTO AEROPORTO, 59149350, Parnamirim",
+      "tipo": "ponto fixo",
+      "datasDisponiveis": [
+        {
+          "data": "08/11/2021",
+          "horariosDisponiveis": [
+            { "horario": "08:00", "vagas": 2 },
+            { "horario": "08:15", "vagas": 3 },
+            { "horario": "08:30", "vagas": 2 },
+            { "horario": "08:45", "vagas": 2 },
+            { "horario": "11:15", "vagas": 2 }
+          ]
+        },
+        {
+          "data": "09/11/2021",
+          "horariosDisponiveis": [
+            { "horario": "08:00", "vagas": 2 },
+            { "horario": "09:00", "vagas": 3 },
+            { "horario": "09:15", "vagas": 1 },
+            { "horario": "11:15", "vagas": 2 }
+          ]
+        }
+      ],
+      "vacina": {
+        "nome": "COVID-19",
+        "grupoPrioritario": "Outros - População Geral",
+        "faixaEtaria": "A partir de 18 anos",
+        "fabricante": "Coronavac/Butantan"
+      }
+    }
+  ]
+}

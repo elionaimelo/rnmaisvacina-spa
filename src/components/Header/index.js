@@ -209,7 +209,7 @@ export const Header = ({ auth }) => {
               >
                 <Flex align="center" mb={{ base: "4", lg: "0" }}>
                   <Image
-                    src="/assets/images/profile.png"
+                    src="/assets/icons/profile.png"
                     layout="fixed"
                     width={80}
                     height={80}

@@ -1,8 +1,10 @@
-import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import { Flex, Text, Box } from "@chakra-ui/react";
+import QRCode from "react-qr-code";
+
 export default function DeclaracaoAutocadastro() {
+  const chave = "e516cS67843562dsafe6d3fa834d8c3bd";
   return (
     <>
       <Head>
@@ -31,13 +33,12 @@ export default function DeclaracaoAutocadastro() {
       </Box>
       <Box bg={"#F6F6F6"} p={10} my={4}>
         <Flex>
-          <Image
-            src="/assets/images/gov.svg"
-            layout="fixed"
-            width={100}
-            height={30}
-            alt=""
-          />
+          <Box w={"110px"} h={"110px"}>
+            <QRCode
+              size={100}
+              value={`https://rnmaisvacina.lais.ufrn.br/cidadao/autenticidade/?chave=${chave}&data=2021-11-10&tipo=2`}
+            />
+          </Box>
           <Text ms={4}>
             Escaneie e consulte de maneira fácil e rápida a autenticidade da
             declaração.
@@ -48,7 +49,7 @@ export default function DeclaracaoAutocadastro() {
         Chave de Autenticação
       </Text>
       <Text align={"center"} mb={3}>
-        e516cS67843562dsafe6d3fa834d8c3bd
+        {chave}
       </Text>
       <Text align={"center"} mb={3} fontWeight={600}>
         Emitido em

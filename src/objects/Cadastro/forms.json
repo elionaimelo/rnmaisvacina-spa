@@ -1,0 +1,229 @@
+{
+  "grupoPrioritario": [
+    {
+      "field": "sindrome_de_down",
+      "name": "SÍNDROME DE DOWN",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "transtorno_do_espectro_do_autismo_(tea)",
+      "name": "TRANSTORNO DO ESPECTRO DO AUTISMO (TEA)",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "comorbidades",
+      "name": "COMORBIDADES",
+      "options": true,
+      "objects": "comorbidades",
+      "selected": false
+    },
+    {
+      "field": "pessoas_entre_60_a_74_anos",
+      "name": "PESSOAS ACIMA DE 60 ANOS INSTITUCIONALIZADAS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "ferroviario",
+      "name": "FERROVIÁRIO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "metroviario",
+      "name": "METROVIÁRIO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "quilombola",
+      "name": "QUILOMBOLA",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "povos_indigenas_em_terras_indigenas",
+      "name": "POVOS INDÍGENAS EM TERRAS INDÍGENAS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "pessoas_em_situacao_de_rua",
+      "name": "PESSOAS EM SITUAÇÃO DE RUA",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "forcas_de_seguranca_e_salvamento",
+      "name": "FORÇAS DE SEGURANÇA E SALVAMENTO",
+      "options": true,
+      "objects": "forcasSeguranca",
+      "selected": false
+    },
+    {
+      "field": "gestante",
+      "name": "GESTANTE",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "aereo",
+      "name": "AÉREO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+
+    {
+      "field": "caminhoneiro",
+      "name": "CAMINHONEIRO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "aquaviario",
+      "name": "AQUAVIÁRIO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "pessoas_com_deficiencia_institucionalizadas",
+      "name": "PESSOAS COM DEFICIÊNCIA INSTITUCIONALIZADAS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "pessoas_com_deficiencias_permanente_grave",
+      "name": "PESSOAS COM DEFICIÊNCIAS PERMANENTE GRAVE",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_portuarios",
+      "name": "TRABALHADORES PORTUÁRIOS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "populacao_privada_de_liberdade",
+      "name": "POPULAÇÃO PRIVADA DE LIBERDADE",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_industriais",
+      "name": "TRABALHADORES INDUSTRIAIS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_da_educacao",
+      "name": "TRABALHADORES DA EDUCAÇÃO",
+      "options": true,
+      "objects": "trabalhadoresEducacao",
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_da_saude",
+      "name": "TRABALHADORES DA SAÚDE",
+      "options": true,
+      "objects": "trabalhadoresSaude",
+      "selected": false
+    },
+    {
+      "field": "pessoas_entre_60_a_74_anos",
+      "name": "PESSOAS ENTRE 60 A 74 ANOS",
+      "options": true,
+      "objects": "entre_60_74",
+      "selected": false
+    },
+    {
+      "field": "pessoas_acima_de_75_anos",
+      "name": "PESSOAS ACIMA DE 75 ANOS",
+      "options": true,
+      "objects": "acima_75",
+      "selected": false
+    },
+    {
+      "field": "outros_-_populacao_geral",
+      "name": "OUTROS - POPULAÇÃO GERAL",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_de_limpeza_urbana_e_manejo_de_residuos_solidos",
+      "name": "TRABALHADORES DE LIMPEZA URBANA E MANEJO DE RESÍDUOS SÓLIDOS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "estudante_-_ensino_fundamental_e_medio",
+      "name": "ESTUDANTE - ENSINO FUNDAMENTAL E MÉDIO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "estudante_-_nivel_superior_e_pos-graduacao",
+      "name": "ESTUDANTE - NÍVEL SUPERIOR E PÓS-GRADUAÇÃO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "puerperas",
+      "name": "PUÉRPERAS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "lactantes",
+      "name": "LACTANTES",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_do_coletivo_rodoviario_passageiros_urbano_e_de_longo_curso",
+      "name": "TRABALHADORES DO COLETIVO RODOVIÁRIO PASSAGEIROS URBANO E DE LONGO CURSO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "trabalhadores_do_setor_bancario",
+      "name": "TRABALHADORES DO SETOR BANCÁRIO",
+      "options": false,
+      "objects": null,
+      "selected": false
+    },
+    {
+      "field": "pessoas_de_12_a_17_anos",
+      "name": "PESSOAS DE 12 A 17 ANOS",
+      "options": false,
+      "objects": null,
+      "selected": false
+    }
+  ]
+}

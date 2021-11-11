@@ -1,4 +1,5 @@
 export { CardContact } from "./CardContact";
+export { CardLocaisVacinacao } from "./CardLocaisVacinacao";
 export { CardVacina } from "./CardVacina";
 export { Footer } from "./Footer";
 export { FormLogin } from "./FormLogin";

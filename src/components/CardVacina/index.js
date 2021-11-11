@@ -61,7 +61,7 @@ export function CardVacina({
           <BoxVacina color="#fff" boxShadow="2xl">
             <Flex justify="start" align="center">
               <Image
-                src="/assets/images/seringa.png"
+                src="/assets/icons/seringa.png"
                 layout="fixed"
                 height={33}
                 width={33}
@@ -79,7 +79,7 @@ export function CardVacina({
                 <Flex align="center" justify="space-between">
                   <HStack spacing="10px">
                     <Image
-                      src="/assets/images/remedio.png"
+                      src="/assets/icons/remedio.png"
                       alt=""
                       layout="fixed"
                       height={25}
@@ -95,7 +95,7 @@ export function CardVacina({
                   <Flex align="center" justify="space-between">
                     <HStack spacing="10px">
                       <Image
-                        src="/assets/images/remedio.png"
+                        src="/assets/icons/remedio.png"
                         alt=""
                         layout="fixed"
                         height={25}
@@ -126,7 +126,7 @@ export function CardVacina({
             <BoxVacina color="#fff" boxShadow="2xl">
               <Flex justify="start" align="center">
                 <Image
-                  src="/assets/images/seringa.png"
+                  src="/assets/icons/seringa.png"
                   layout="fixed"
                   height={33}
                   width={33}
@@ -144,7 +144,7 @@ export function CardVacina({
                   <Flex align="center" justify="space-between">
                     <HStack spacing="10px">
                       <Image
-                        src="/assets/images/remedio.png"
+                        src="/assets/icons/remedio.png"
                         alt=""
                         layout="fixed"
                         height={25}
@@ -180,7 +180,7 @@ export function CardVacina({
               <Flex align="center" justify="space-between">
                 <Flex>
                   <Image
-                    src="/assets/images/seringa.png"
+                    src="/assets/icons/seringa.png"
                     layout="fixed"
                     height={33}
                     width={33}
@@ -206,7 +206,7 @@ export function CardVacina({
           <AlertDialogBody color="#345b77">
             <HStack spacing="10px" mt={2}>
               <Image
-                src="/assets/images/remedio.png"
+                src="/assets/icons/remedio.png"
                 alt=""
                 layout="fixed"
                 height={25}

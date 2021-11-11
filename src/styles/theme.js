@@ -25,6 +25,12 @@ const colors = {
       color: "#79cef7",
     },
   },
+  alerts: {
+    warning: {
+      color: "#866305",
+      background: "#FFF3CD",
+    },
+  },
 };
 
 export default {
