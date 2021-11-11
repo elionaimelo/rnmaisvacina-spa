@@ -31,8 +31,39 @@ export default function AdicionarAgendamento() {
     ...initialValuesForm,
   };
   const local = locaisVacinacao.locais;
-  const totalLocais = local.map((item) => item.datasDisponiveis.length);
+  const [filter, setFilter] = useState(local);
+  const totalLocais = filter.map((item) => item.datasDisponiveis.length);
   var total = totalLocais.reduce((total, numero) => total + numero, 0);
+
+  const filterLocal = (value) => {
+    if (value === "fixo") {
+      const localFixo = local.filter((el) => el.tipo === "ponto fixo");
+      setFilter(localFixo);
+    } else if (value === "drive") {
+      const localDrive = local.filter((el) => el.tipo === "drive thru");
+      setFilter(localDrive);
+    }
+  };
+
+  const loadCards = () => {
+    if (filter.length === 0) {
+      return (
+        <Box bg={"#FFF3CD"} p={4} borderRadius={4} mt={12} color={"#866305"}>
+          Nenhum horário encontrado para a busca realizada.
+        </Box>
+      );
+    } else {
+      return filter.map((el) => (
+        <CardLocaisVacinacao
+          local={el.nome}
+          tipo={el.tipo}
+          endereco={el.endereco}
+          vacina={el.vacina}
+          datasDisponiveis={el.datasDisponiveis}
+        />
+      ));
+    }
+  };
 
   return (
     <>
@@ -258,6 +289,7 @@ export default function AdicionarAgendamento() {
                   py={"6px"}
                   fontWeight={400}
                   me={2}
+                  onClick={() => filterLocal("drive")}
                 >
                   Drive Thru
                 </Button>
@@ -270,20 +302,13 @@ export default function AdicionarAgendamento() {
                   px={"12px"}
                   py={"6px"}
                   fontWeight={400}
+                  onClick={() => filterLocal("fixo")}
                 >
                   Pontos Fixos
                 </Button>
               </Flex>
             </Flex>
-            {local.map((el) => (
-              <CardLocaisVacinacao
-                local={el.nome}
-                tipo={el.tipo}
-                endereco={el.endereco}
-                vacina={el.vacina}
-                datasDisponiveis={el.datasDisponiveis}
-              />
-            ))}
+            {loadCards()}
           </Container>
         ) : (
           <Box bg={"#FFF3CD"} p={4} borderRadius={4} mt={12} color={"#866305"}>
