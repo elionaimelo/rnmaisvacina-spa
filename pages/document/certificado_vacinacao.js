@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
+import QRCode from "react-qr-code";
+
 import { Flex, Heading, Text, Box } from "@chakra-ui/react";
 import Vacinas from "src/objects/Painel/Vacinas.json";
 import strings from "src/objects/CertificadoVacinacao/LangStrings.js";
 
 export default function CertificadoVacinacao() {
+  const chave = "e516cS67843562dsafe6d3fa834d8c3bd";
   const vacinas = Vacinas.vacinas;
   const router = useRouter();
   const { language } = router.query;
@@ -76,13 +78,12 @@ export default function CertificadoVacinacao() {
         </Box>
         <Box bg={"#F6F6F6"} p={10} my={4}>
           <Flex>
-            <Image
-              src="/assets/images/gov.svg"
-              layout="fixed"
-              width={100}
-              height={30}
-              alt=""
-            />
+            <Box w={"110px"} h={"110px"}>
+              <QRCode
+                size={100}
+                value={`https://rnmaisvacina.lais.ufrn.br/cidadao/autenticidade/?chave=${chave}&data=2021-11-10&tipo=1`}
+              />
+            </Box>
             <Text ms={4}>{content.VERIFY}</Text>
           </Flex>
         </Box>
@@ -90,7 +91,7 @@ export default function CertificadoVacinacao() {
           {content.AUTHKEY}
         </Text>
         <Text align={"center"} mb={3}>
-          e516cS67843562dsafe6d3fa834d8c3bd
+          {chave}
         </Text>
         <Text align={"center"} mb={3} fontWeight={600}>
           {content.ISSUE}
