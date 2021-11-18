@@ -55,15 +55,13 @@ export const Header = ({ auth }) => {
       <Box className="header-top" bg="#fff" w="100%" color="#00B3F3">
         <Container maxW="container.xl">
           <Link href="/">
-            <a>
-              <Image
-                src="/assets/images/logo.svg"
-                width={170}
-                height={60}
-                layout="fixed"
-                alt=""
-              />
-            </a>
+            <Image
+              src="/assets/images/logo.svg"
+              width={170}
+              height={60}
+              layout="fixed"
+              alt=""
+            />
           </Link>
         </Container>
       </Box>
