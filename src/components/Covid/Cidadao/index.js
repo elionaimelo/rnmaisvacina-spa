@@ -30,6 +30,8 @@ export const AvailableCities = styled(Container)``;
 
 export const Doses = styled(Container)``;
 
-export const Monitoring = styled(Container)``;
+export const Monitoring = styled(Container)`
+  min-width: 100vw;
+`;
 
 export const PriorityGroups = styled(Container)``;

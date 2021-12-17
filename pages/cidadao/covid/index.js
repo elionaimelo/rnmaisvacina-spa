@@ -157,9 +157,8 @@ export default function HomePage() {
       <InicioComponent headerBtn={btnHeader} />
       <AboutComponent />
       <AvailableCitiesComponent />
-
       <DosesComponent />
-      <MonitoringComponent />
+      <MonitoringComponent p={0} />
       <PriorityGroupsComponent />
     </>
   );

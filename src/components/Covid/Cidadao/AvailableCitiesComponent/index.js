@@ -8,10 +8,22 @@ import {
   Heading,
   Text,
   Divider,
+  FormControl,
+  FormLabel,
 } from "@chakra-ui/react";
+import { Select } from "chakra-react-select";
 import { AvailableCities } from "src/components/Covid/Cidadao";
 
 export function AvailableCitiesComponent() {
+  const groupedOptions = [
+    { value: "VT", label: "Vermont" },
+    { value: "VI", label: "Virgin Islands" },
+    { value: "VA", label: "Virginia" },
+    { value: "WA", label: "Washington" },
+    { value: "WV", label: "West Virginia" },
+    { value: "WI", label: "Wisconsin" },
+    { value: "WY", label: "Wyoming" },
+  ];
   return (
     <AvailableCities
       id="#availableCities"
@@ -25,6 +37,16 @@ export function AvailableCitiesComponent() {
       <Divider borderWidth={2} borderColor={"#00B3F3"} w={"100vw"} />
       <Container maxW={"container.lg"} mb={12}>
         <Text my={5}>Se preferir, digite o nome do município desejado.</Text>
+        <FormControl mb={10} maxW={"400px"}>
+          {/* <FormLabel>chakra-react-select demo</FormLabel> */}
+          <Select
+            name="city"
+            options={groupedOptions}
+            placeholder="Digite o nome do município"
+            closeMenuOnSelect={false}
+            selectedOptionStyle="check"
+          />
+        </FormControl>
         <Box
           borderColor={"#00B3F3"}
           borderWidth={1}
